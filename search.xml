@@ -12,6 +12,23 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Chrome Extension</title>
+    <url>/2020/02/08/Chrome%20Extension/</url>
+    <content><![CDATA[<p>Chrome Extension 开发笔记</p>
+<a id="more"></a>
+
+<hr>
+<h1 id="Chrome-Extension"><a href="#Chrome-Extension" class="headerlink" title="Chrome Extension"></a>Chrome Extension</h1><h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p><a href="https://www.freecodecamp.org/news/how-to-create-a-chrome-extension-part-1-ad2a3a77541/" target="_blank" rel="noopener">https://www.freecodecamp.org/news/how-to-create-a-chrome-extension-part-1-ad2a3a77541/</a>  </p>
+<p><code>Chrome插件（chrome Extensions）开发攻略  （含 插件结构）</code><br><a href="http://chromecj.com/dev/2018-07/1482.html" target="_blank" rel="noopener">http://chromecj.com/dev/2018-07/1482.html</a>  </p>
+]]></content>
+      <categories>
+        <category>chrome extension</category>
+      </categories>
+      <tags>
+        <tag>chrome extension</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Anaconda Doc</title>
     <url>/2020/02/08/AnacondaDoc/</url>
     <content><![CDATA[<p>Anaconda 相关操作整理</p>
@@ -31,23 +48,6 @@
       <tags>
         <tag>anaconda</tag>
         <tag>Doc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Chrome Extension</title>
-    <url>/2020/02/08/Chrome%20Extension/</url>
-    <content><![CDATA[<p>Chrome Extension 开发笔记</p>
-<a id="more"></a>
-
-<hr>
-<h1 id="Chrome-Extension"><a href="#Chrome-Extension" class="headerlink" title="Chrome Extension"></a>Chrome Extension</h1><h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p><a href="https://www.freecodecamp.org/news/how-to-create-a-chrome-extension-part-1-ad2a3a77541/" target="_blank" rel="noopener">https://www.freecodecamp.org/news/how-to-create-a-chrome-extension-part-1-ad2a3a77541/</a>  </p>
-<p><code>Chrome插件（chrome Extensions）开发攻略  （含 插件结构）</code><br><a href="http://chromecj.com/dev/2018-07/1482.html" target="_blank" rel="noopener">http://chromecj.com/dev/2018-07/1482.html</a>  </p>
-]]></content>
-      <categories>
-        <category>chrome extension</category>
-      </categories>
-      <tags>
-        <tag>chrome extension</tag>
       </tags>
   </entry>
   <entry>
@@ -1346,6 +1346,59 @@ myClass.newMethod();
       </tags>
   </entry>
   <entry>
+    <title>pieces of knowledge</title>
+    <url>/2019/10/05/Pieces/</url>
+    <content><![CDATA[<p>pieces of knowledge</p>
+<a id="more"></a>
+<hr>
+<h1 id="pieces-of-knowledge"><a href="#pieces-of-knowledge" class="headerlink" title="pieces of knowledge"></a><strong><em>pieces of knowledge</em></strong></h1><h2 id="64-位软件和-32-位有什么具体区别？"><a href="#64-位软件和-32-位有什么具体区别？" class="headerlink" title="64 位软件和 32 位有什么具体区别？"></a>64 位软件和 32 位有什么具体区别？</h2><p>1.32bCPU和64bCPU的区别？  </p>
+<p>2.编译器与程序位数？  </p>
+<p>3.操作系统位数和软件位数的关系  </p>
+<p>4.问题<br>1）64位的系统上是否能运行32b的应用程序？<br>2）32b的系统上是否能运行64位的应用程序？</p>
+<p><a href="https://blog.csdn.net/csdn_chai/article/details/77966056" target="_blank" rel="noopener">https://blog.csdn.net/csdn_chai/article/details/77966056</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>杂类</category>
+      </categories>
+      <tags>
+        <tag>计算机知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>npm Doc</title>
+    <url>/2019/10/05/npm/</url>
+    <content><![CDATA[<p>1、npm install 本地安装 与  全局安装  的区别</p>
+<p>2、查看自己全局安装过的包</p>
+<a id="more"></a>
+
+<hr>
+<h1 id="npm"><a href="#npm" class="headerlink" title="npm"></a><strong><em>npm</em></strong></h1><h2 id="npm-install-本地安装-与-全局安装-的区别"><a href="#npm-install-本地安装-与-全局安装-的区别" class="headerlink" title="npm install 本地安装 与  全局安装  的区别"></a>npm install 本地安装 与  全局安装  的区别</h2><p>npm install grunt # 本地安装<br>npm install -g grunt-cli # 全局安装</p>
+<p>本地安装</p>
+<ol>
+<li>将安装包放在 ./node_modules 下（运行npm时所在的目录</li>
+<li>可以通过 require() 来引入本地安装的包</li>
+</ol>
+<p>全局安装</p>
+<ol>
+<li>将安装包放在 /usr/local 下</li>
+<li>可以直接在命令行里使用</li>
+</ol>
+<p>细节与例子：<br><a href="https://www.cnblogs.com/chyingp/p/npm-install-difference-between-local-global.html" target="_blank" rel="noopener">https://www.cnblogs.com/chyingp/p/npm-install-difference-between-local-global.html</a></p>
+<hr>
+<h2 id="查看自己全局安装过的包"><a href="#查看自己全局安装过的包" class="headerlink" title="查看自己全局安装过的包"></a>查看自己全局安装过的包</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">npm <span class="built_in">list</span> -g --depth <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>-g:全局的安装包<br>list：已安装的node包<br>–depth 0：可能是深度0  </p>
+]]></content>
+      <categories>
+        <category>npm</category>
+      </categories>
+      <tags>
+        <tag>Doc</tag>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git  Guide</title>
     <url>/2019/10/05/Git-Guide/</url>
     <content><![CDATA[<p>Git  Guide</p>
@@ -1531,59 +1584,6 @@ myClass.newMethod();
       </tags>
   </entry>
   <entry>
-    <title>pieces of knowledge</title>
-    <url>/2019/10/05/Pieces/</url>
-    <content><![CDATA[<p>pieces of knowledge</p>
-<a id="more"></a>
-<hr>
-<h1 id="pieces-of-knowledge"><a href="#pieces-of-knowledge" class="headerlink" title="pieces of knowledge"></a><strong><em>pieces of knowledge</em></strong></h1><h2 id="64-位软件和-32-位有什么具体区别？"><a href="#64-位软件和-32-位有什么具体区别？" class="headerlink" title="64 位软件和 32 位有什么具体区别？"></a>64 位软件和 32 位有什么具体区别？</h2><p>1.32bCPU和64bCPU的区别？  </p>
-<p>2.编译器与程序位数？  </p>
-<p>3.操作系统位数和软件位数的关系  </p>
-<p>4.问题<br>1）64位的系统上是否能运行32b的应用程序？<br>2）32b的系统上是否能运行64位的应用程序？</p>
-<p><a href="https://blog.csdn.net/csdn_chai/article/details/77966056" target="_blank" rel="noopener">https://blog.csdn.net/csdn_chai/article/details/77966056</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>杂类</category>
-      </categories>
-      <tags>
-        <tag>计算机知识</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>npm Doc</title>
-    <url>/2019/10/05/npm/</url>
-    <content><![CDATA[<p>1、npm install 本地安装 与  全局安装  的区别</p>
-<p>2、查看自己全局安装过的包</p>
-<a id="more"></a>
-
-<hr>
-<h1 id="npm"><a href="#npm" class="headerlink" title="npm"></a><strong><em>npm</em></strong></h1><h2 id="npm-install-本地安装-与-全局安装-的区别"><a href="#npm-install-本地安装-与-全局安装-的区别" class="headerlink" title="npm install 本地安装 与  全局安装  的区别"></a>npm install 本地安装 与  全局安装  的区别</h2><p>npm install grunt # 本地安装<br>npm install -g grunt-cli # 全局安装</p>
-<p>本地安装</p>
-<ol>
-<li>将安装包放在 ./node_modules 下（运行npm时所在的目录</li>
-<li>可以通过 require() 来引入本地安装的包</li>
-</ol>
-<p>全局安装</p>
-<ol>
-<li>将安装包放在 /usr/local 下</li>
-<li>可以直接在命令行里使用</li>
-</ol>
-<p>细节与例子：<br><a href="https://www.cnblogs.com/chyingp/p/npm-install-difference-between-local-global.html" target="_blank" rel="noopener">https://www.cnblogs.com/chyingp/p/npm-install-difference-between-local-global.html</a></p>
-<hr>
-<h2 id="查看自己全局安装过的包"><a href="#查看自己全局安装过的包" class="headerlink" title="查看自己全局安装过的包"></a>查看自己全局安装过的包</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">npm <span class="built_in">list</span> -g --depth <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<p>-g:全局的安装包<br>list：已安装的node包<br>–depth 0：可能是深度0  </p>
-]]></content>
-      <categories>
-        <category>npm</category>
-      </categories>
-      <tags>
-        <tag>Doc</tag>
-        <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>跨终端部署blog  使用git实现</title>
     <url>/2019/10/05/%E8%B7%A8%E7%BB%88%E7%AB%AF%E9%83%A8%E7%BD%B2blog/</url>
     <content><![CDATA[<p>跨终端部署blog  使用git实现</p>
@@ -1637,8 +1637,8 @@ myClass.newMethod();
         <category>blog</category>
       </categories>
       <tags>
-        <tag>git</tag>
         <tag>hexo</tag>
+        <tag>git</tag>
         <tag>blog</tag>
         <tag>跨终端</tag>
       </tags>
