@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>MVC&amp;三层架构</title>
-    <url>/2020/02/09/MVC&amp;%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/</url>
-    <content><![CDATA[<h1 id="MVC-设计模式-amp-三层架构（DAL-BLL-WEB）"><a href="#MVC-设计模式-amp-三层架构（DAL-BLL-WEB）" class="headerlink" title="MVC 设计模式  &amp;  三层架构（DAL,BLL,WEB）"></a>MVC 设计模式  &amp;  三层架构（DAL,BLL,WEB）</h1><h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p>MVC模式是一种复合设计模式，展示层-View；业务逻辑层-Control；持久层-Model。 </p>
-<h2 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h2><p>DAL（数据访问层）、BLL（业务逻辑层）、web层/model层  </p>
-<h2 id="两者的区别"><a href="#两者的区别" class="headerlink" title="两者的区别"></a>两者的区别</h2><p>三层架构：<br>首先这是一种软件抽象的层次结构，是一种纵向切割，各层之间会存在高层依赖底层的关系，耦合性较高。  </p>
-<p>MVC是横向分割，不存在明显的层次结构，和向下依赖关系，各部分较为独立，controller作为各部分间的沟通桥梁，耦合性更低。  </p>
-<p>MVC是 Model-View-Controller，严格说这三个加起来以后才是三层架构中的WEB层,C层直接与三层中的BLL进行对话.  </p>
-<p>详情见<br>ref:<br><a href="https://www.cnblogs.com/FredMac/p/6744531.html" target="_blank" rel="noopener">https://www.cnblogs.com/FredMac/p/6744531.html</a>  </p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Chrome Extension</title>
-    <url>/2020/02/08/Chrome%20Extension/</url>
-    <content><![CDATA[<p>Chrome Extension 开发笔记</p>
-<a id="more"></a>
-
-<hr>
-<h1 id="Chrome-Extension"><a href="#Chrome-Extension" class="headerlink" title="Chrome Extension"></a>Chrome Extension</h1><h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p><a href="https://www.freecodecamp.org/news/how-to-create-a-chrome-extension-part-1-ad2a3a77541/" target="_blank" rel="noopener">https://www.freecodecamp.org/news/how-to-create-a-chrome-extension-part-1-ad2a3a77541/</a>  </p>
-<p><code>Chrome插件（chrome Extensions）开发攻略  （含 插件结构）</code><br><a href="http://chromecj.com/dev/2018-07/1482.html" target="_blank" rel="noopener">http://chromecj.com/dev/2018-07/1482.html</a>  </p>
-]]></content>
-      <categories>
-        <category>chrome extension</category>
-      </categories>
-      <tags>
-        <tag>chrome extension</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Anaconda Doc</title>
     <url>/2020/02/08/AnacondaDoc/</url>
     <content><![CDATA[<p>Anaconda 相关操作整理</p>
@@ -245,6 +217,23 @@
       </tags>
   </entry>
   <entry>
+    <title>Chrome Extension</title>
+    <url>/2020/02/08/Chrome%20Extension/</url>
+    <content><![CDATA[<p>Chrome Extension 开发笔记</p>
+<a id="more"></a>
+
+<hr>
+<h1 id="Chrome-Extension"><a href="#Chrome-Extension" class="headerlink" title="Chrome Extension"></a>Chrome Extension</h1><h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p><a href="https://www.freecodecamp.org/news/how-to-create-a-chrome-extension-part-1-ad2a3a77541/" target="_blank" rel="noopener">https://www.freecodecamp.org/news/how-to-create-a-chrome-extension-part-1-ad2a3a77541/</a>  </p>
+<p><code>Chrome插件（chrome Extensions）开发攻略  （含 插件结构）</code><br><a href="http://chromecj.com/dev/2018-07/1482.html" target="_blank" rel="noopener">http://chromecj.com/dev/2018-07/1482.html</a>  </p>
+]]></content>
+      <categories>
+        <category>chrome extension</category>
+      </categories>
+      <tags>
+        <tag>chrome extension</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pit</title>
     <url>/2020/01/10/Pit_202001101611/</url>
     <content><![CDATA[<p>踩过的坑！！！</p>
@@ -326,6 +315,29 @@ END;
       </categories>
       <tags>
         <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MVC 设计模式  &amp;  三层架构（DAL,BLL,WEB）</title>
+    <url>/2020/01/02/MVC&amp;%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/</url>
+    <content><![CDATA[<p>MVC 设计模式  &amp;  三层架构（DAL,BLL,WEB）</p>
+<a id="more"></a>
+
+
+<h1 id="MVC-设计模式-amp-三层架构（DAL-BLL-WEB）"><a href="#MVC-设计模式-amp-三层架构（DAL-BLL-WEB）" class="headerlink" title="MVC 设计模式  &amp;  三层架构（DAL,BLL,WEB）"></a>MVC 设计模式  &amp;  三层架构（DAL,BLL,WEB）</h1><h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p>MVC模式是一种复合设计模式，展示层-View；业务逻辑层-Control；持久层-Model。 </p>
+<h2 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h2><p>DAL（数据访问层）、BLL（业务逻辑层）、web层/model层  </p>
+<h2 id="两者的区别"><a href="#两者的区别" class="headerlink" title="两者的区别"></a>两者的区别</h2><p>三层架构：<br>首先这是一种软件抽象的层次结构，是一种纵向切割，各层之间会存在高层依赖底层的关系，耦合性较高。  </p>
+<p>MVC是横向分割，不存在明显的层次结构，和向下依赖关系，各部分较为独立，controller作为各部分间的沟通桥梁，耦合性更低。  </p>
+<p>MVC是 Model-View-Controller，严格说这三个加起来以后才是三层架构中的WEB层,C层直接与三层中的BLL进行对话.  </p>
+<p>详情见<br>ref:<br><a href="https://www.cnblogs.com/FredMac/p/6744531.html" target="_blank" rel="noopener">https://www.cnblogs.com/FredMac/p/6744531.html</a>  </p>
+]]></content>
+      <categories>
+        <category>开发模式</category>
+      </categories>
+      <tags>
+        <tag>MVC</tag>
+        <tag>架构</tag>
+        <tag>设计模式</tag>
       </tags>
   </entry>
   <entry>
@@ -1399,6 +1411,66 @@ myClass.newMethod();
       </tags>
   </entry>
   <entry>
+    <title>跨终端部署blog  使用git实现</title>
+    <url>/2019/10/05/%E8%B7%A8%E7%BB%88%E7%AB%AF%E9%83%A8%E7%BD%B2blog/</url>
+    <content><![CDATA[<p>跨终端部署blog  使用git实现</p>
+<a id="more"></a>
+
+<hr>
+<h1 id="跨终端部署blog-使用git实现"><a href="#跨终端部署blog-使用git实现" class="headerlink" title="跨终端部署blog  使用git实现"></a><strong><em>跨终端部署blog  使用git实现</em></strong></h1><h2 id="思路来源："><a href="#思路来源：" class="headerlink" title="思路来源："></a>思路来源：</h2><p><a href="https://www.zhihu.com/question/21193762" target="_blank" rel="noopener">https://www.zhihu.com/question/21193762</a></p>
+<ul>
+<li>基础环境 node.js (不采取单独安装，而采用anaconda安装) <code>conda install -c conda-forge nodejs</code> <a href="https://anaconda.org/conda-forge/nodejs" target="_blank" rel="noopener">https://anaconda.org/conda-forge/nodejs</a><br> anaconda 入门姿势 <a href="https://www.jianshu.com/p/eaee1fadc1e9" target="_blank" rel="noopener">https://www.jianshu.com/p/eaee1fadc1e9</a></li>
+<li>hexo</li>
+<li>git</li>
+</ul>
+<p>hexo + github page  = hexo-blog<br>入门姿势：<a href="https://zhuanlan.zhihu.com/p/35668237" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35668237</a></p>
+<blockquote>
+<p>基本思路：<br>将blog　整个文件git 到 github 的 私库中，这样就是对blog的 <code>完整</code> 备份（具体细节见下方）；<br>hexo 生成的静态页面存储git 在另一公库中。</p>
+</blockquote>
+<hr>
+<h2 id="关于-npm-安装包问题"><a href="#关于-npm-安装包问题" class="headerlink" title="关于 npm 安装包问题"></a>关于 npm 安装包问题</h2><p>没有 <code>-g</code> npm 命令是本地安装，即在当前路径下将包安装在node_modules 文件里，而非全局路径下</p>
+<p>以下有两个本地安装命令就是将包安装在了当前hexo创建的blog文件的 node_modules 文件</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">npm i hexo-cli -g  <span class="comment">//这个命令就是全局的</span></span><br><span class="line">npm install</span><br><span class="line">npm i hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<p>在blog 目录的路径下 通过<code>npm list --depth 0</code> 可查看本地安装的包</p>
+<hr>
+<h2 id="Git-工具-子模块（仓库里还有子仓库）"><a href="#Git-工具-子模块（仓库里还有子仓库）" class="headerlink" title="Git 工具 - 子模块（仓库里还有子仓库）"></a>Git 工具 - 子模块（仓库里还有子仓库）</h2><h3 id="我这里偷懒直接压缩-为-zip"><a href="#我这里偷懒直接压缩-为-zip" class="headerlink" title="我这里偷懒直接压缩 为 .zip"></a>我这里偷懒直接压缩 为 .zip</h3><h3 id="Git-官方说明"><a href="#Git-官方说明" class="headerlink" title="Git 官方说明"></a>Git 官方说明</h3><p><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97" target="_blank" rel="noopener">https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97</a></p>
+<h3 id="相关解释："><a href="#相关解释：" class="headerlink" title="相关解释："></a>相关解释：</h3><p>我是clone了一个文件夹下来，然后想把这个文件夹添加上去，使用了git add .，但是一直报Changes not staged for commit的错误，并且那个文件夹后面有(modified content)，解决如下：<br>因为是clone下来的文件，所以有.git文件，将.git文件删除就ok啦</p>
+<p><a href="https://segmentfault.com/q/1010000004428943?_ea=613759" target="_blank" rel="noopener">https://segmentfault.com/q/1010000004428943?_ea=613759</a></p>
+<hr>
+<h2 id="最终实现的方法"><a href="#最终实现的方法" class="headerlink" title="最终实现的方法"></a>最终实现的方法</h2><ul>
+<li><p>push 时：  </p>
+<p>进入git 仓库 进行 git bash here</p>
+<p>将整个 blog 文件（就是根目录 - 就一个文件）使用 git 放到 GitHub 新建的私库中，好处时源码不会公开，只公开生成的静态文件</p>
+<p>其中，要修改的是：</p>
+</li>
+</ul>
+<p><del>在 hexo 主目录（即由hexo-cli 初始化的目录中）<br>    .gitignore    -改-&gt;    .gitignore-changed    （这是为了在git blog 文件时该文件能过被提交）</del></p>
+<p>  压缩所有以下文件（以同名形式，原因大概是涉及到子模式，所以只要是存在子模式的文件都进行同名压缩）<br>  .deploy_git<br>  themes</p>
+<ul>
+<li>pull/clone 后：  </li>
+</ul>
+<p><del>.gitignore-changed  -改-&gt; .gitignore  （这是为了 <code>hexo d</code> 部署blog静态文件到github repo 时进行文件的忽略）</del></p>
+<p>解压所有.zip文件（到同名文件夹，这是为了 <code>hexo g</code> 生成操作能过正常进行）<br>暂有：<br>.deploy_git<br>themes  </p>
+<ul>
+<li>pull/clone 后，编辑内容：</li>
+</ul>
+<p>进入 blog文件目录（用 hexo 生成的）  </p>
+<p>执行 hexo 相关操作  </p>
+<p>常用操作：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line">hexo s --debug  <span class="comment">//开启调试模式</span></span><br><span class="line"></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>git</tag>
+        <tag>blog</tag>
+        <tag>跨终端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git  Guide</title>
     <url>/2019/10/05/Git-Guide/</url>
     <content><![CDATA[<p>Git  Guide</p>
@@ -1581,66 +1653,6 @@ myClass.newMethod();
       <tags>
         <tag>git</tag>
         <tag>.gitignore</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>跨终端部署blog  使用git实现</title>
-    <url>/2019/10/05/%E8%B7%A8%E7%BB%88%E7%AB%AF%E9%83%A8%E7%BD%B2blog/</url>
-    <content><![CDATA[<p>跨终端部署blog  使用git实现</p>
-<a id="more"></a>
-
-<hr>
-<h1 id="跨终端部署blog-使用git实现"><a href="#跨终端部署blog-使用git实现" class="headerlink" title="跨终端部署blog  使用git实现"></a><strong><em>跨终端部署blog  使用git实现</em></strong></h1><h2 id="思路来源："><a href="#思路来源：" class="headerlink" title="思路来源："></a>思路来源：</h2><p><a href="https://www.zhihu.com/question/21193762" target="_blank" rel="noopener">https://www.zhihu.com/question/21193762</a></p>
-<ul>
-<li>基础环境 node.js (不采取单独安装，而采用anaconda安装) <code>conda install -c conda-forge nodejs</code> <a href="https://anaconda.org/conda-forge/nodejs" target="_blank" rel="noopener">https://anaconda.org/conda-forge/nodejs</a><br> anaconda 入门姿势 <a href="https://www.jianshu.com/p/eaee1fadc1e9" target="_blank" rel="noopener">https://www.jianshu.com/p/eaee1fadc1e9</a></li>
-<li>hexo</li>
-<li>git</li>
-</ul>
-<p>hexo + github page  = hexo-blog<br>入门姿势：<a href="https://zhuanlan.zhihu.com/p/35668237" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35668237</a></p>
-<blockquote>
-<p>基本思路：<br>将blog　整个文件git 到 github 的 私库中，这样就是对blog的 <code>完整</code> 备份（具体细节见下方）；<br>hexo 生成的静态页面存储git 在另一公库中。</p>
-</blockquote>
-<hr>
-<h2 id="关于-npm-安装包问题"><a href="#关于-npm-安装包问题" class="headerlink" title="关于 npm 安装包问题"></a>关于 npm 安装包问题</h2><p>没有 <code>-g</code> npm 命令是本地安装，即在当前路径下将包安装在node_modules 文件里，而非全局路径下</p>
-<p>以下有两个本地安装命令就是将包安装在了当前hexo创建的blog文件的 node_modules 文件</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">npm i hexo-cli -g  <span class="comment">//这个命令就是全局的</span></span><br><span class="line">npm install</span><br><span class="line">npm i hexo-deployer-git</span><br></pre></td></tr></table></figure>
-
-<p>在blog 目录的路径下 通过<code>npm list --depth 0</code> 可查看本地安装的包</p>
-<hr>
-<h2 id="Git-工具-子模块（仓库里还有子仓库）"><a href="#Git-工具-子模块（仓库里还有子仓库）" class="headerlink" title="Git 工具 - 子模块（仓库里还有子仓库）"></a>Git 工具 - 子模块（仓库里还有子仓库）</h2><h3 id="我这里偷懒直接压缩-为-zip"><a href="#我这里偷懒直接压缩-为-zip" class="headerlink" title="我这里偷懒直接压缩 为 .zip"></a>我这里偷懒直接压缩 为 .zip</h3><h3 id="Git-官方说明"><a href="#Git-官方说明" class="headerlink" title="Git 官方说明"></a>Git 官方说明</h3><p><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97" target="_blank" rel="noopener">https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97</a></p>
-<h3 id="相关解释："><a href="#相关解释：" class="headerlink" title="相关解释："></a>相关解释：</h3><p>我是clone了一个文件夹下来，然后想把这个文件夹添加上去，使用了git add .，但是一直报Changes not staged for commit的错误，并且那个文件夹后面有(modified content)，解决如下：<br>因为是clone下来的文件，所以有.git文件，将.git文件删除就ok啦</p>
-<p><a href="https://segmentfault.com/q/1010000004428943?_ea=613759" target="_blank" rel="noopener">https://segmentfault.com/q/1010000004428943?_ea=613759</a></p>
-<hr>
-<h2 id="最终实现的方法"><a href="#最终实现的方法" class="headerlink" title="最终实现的方法"></a>最终实现的方法</h2><ul>
-<li><p>push 时：  </p>
-<p>进入git 仓库 进行 git bash here</p>
-<p>将整个 blog 文件（就是根目录 - 就一个文件）使用 git 放到 GitHub 新建的私库中，好处时源码不会公开，只公开生成的静态文件</p>
-<p>其中，要修改的是：</p>
-</li>
-</ul>
-<p><del>在 hexo 主目录（即由hexo-cli 初始化的目录中）<br>    .gitignore    -改-&gt;    .gitignore-changed    （这是为了在git blog 文件时该文件能过被提交）</del></p>
-<p>  压缩所有以下文件（以同名形式，原因大概是涉及到子模式，所以只要是存在子模式的文件都进行同名压缩）<br>  .deploy_git<br>  themes</p>
-<ul>
-<li>pull/clone 后：  </li>
-</ul>
-<p><del>.gitignore-changed  -改-&gt; .gitignore  （这是为了 <code>hexo d</code> 部署blog静态文件到github repo 时进行文件的忽略）</del></p>
-<p>解压所有.zip文件（到同名文件夹，这是为了 <code>hexo g</code> 生成操作能过正常进行）<br>暂有：<br>.deploy_git<br>themes  </p>
-<ul>
-<li>pull/clone 后，编辑内容：</li>
-</ul>
-<p>进入 blog文件目录（用 hexo 生成的）  </p>
-<p>执行 hexo 相关操作  </p>
-<p>常用操作：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line">hexo s --debug  <span class="comment">//开启调试模式</span></span><br><span class="line"></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>blog</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>git</tag>
-        <tag>blog</tag>
-        <tag>跨终端</tag>
       </tags>
   </entry>
   <entry>
@@ -2152,9 +2164,9 @@ insert table: RoleInfo </code></pre><p>RoleInfo 表中存储了从ztree中选到
         <category>C#</category>
       </categories>
       <tags>
+        <tag>MVC</tag>
         <tag>C#</tag>
         <tag>三层架构</tag>
-        <tag>MVC</tag>
         <tag>DataTable</tag>
         <tag>NPOI</tag>
         <tag>select2</tag>
