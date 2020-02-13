@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="JavaWeb 开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaWeb 开发入门(servlet &amp; jsp)">
+<meta property="og:url" content="http://yoursite.com/2019/12/13/javaWeb/index.html">
+<meta property="og:site_name" content="HnnH">
+<meta property="og:description" content="JavaWeb 开发">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-02-11T14:25:46.311Z">
+<meta property="article:author" content="HnnH">
+<meta property="article:tag" content="JSP">
+<meta property="article:tag" content="JavaWeb">
+<meta property="article:tag" content="Servlet">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2019/12/13/javaWeb/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>JavaWeb 开发入门(servlet & jsp) | HnnH</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HnnH</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">36</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">21</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/categories/Docs/" rel="section"><i class="fa fa-fw fa-file"></i>Docs</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-lab">
+
+    <a href="/lab/" rel="section"><i class="fa fa-fw fa-flask"></i>Lab</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/13/javaWeb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="HnnH">
+      <meta itemprop="description" content="That which does not kill us makes us stronger">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HnnH">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaWeb 开发入门(servlet & jsp)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-13 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-13T00:00:00+08:00">2019-12-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-11 22:25:46" itemprop="dateModified" datetime="2020-02-11T22:25:46+08:00">2020-02-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/JavaWeb/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaWeb</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>JavaWeb 开发</p>
+<a id="more"></a>
+
+<hr>
+<hr>
+<h1 id="补习"><a href="#补习" class="headerlink" title="补习"></a>补习</h1><p>io 流<br>序列化和反序列化  </p>
+<p>xml解析  </p>
+<p>数据中心项目<br>    事务操作（提交（增删改需要：commit），回退）<br>    事务隔离<br>    批处理  </p>
+<p>log4j 日志  </p>
+<p>DAO层框架<br>SSH<br>SSM<br>comments-… .jar   apache推出的  </p>
+<p>day02 -5 - 6  </p>
+<hr>
+<h1 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h1><p>从jsp页面发送ajax请求，servlet接受参数并返回json数据<br><a href="https://blog.csdn.net/yanghan1222/article/details/78447231" target="_blank" rel="noopener">https://blog.csdn.net/yanghan1222/article/details/78447231</a></p>
+<hr>
+<hr>
+<h1 id="基础复习"><a href="#基础复习" class="headerlink" title="基础复习"></a>基础复习</h1><h2 id="构造器-constructor"><a href="#构造器-constructor" class="headerlink" title="构造器 constructor"></a>构造器 constructor</h2><p>构造器作为一种方法，负责类中成员变量（域）的初始化。</p>
+<p>‘构造器’ 和 ‘方法’ 区别  </p>
+<ul>
+<li>一个类可以有多个构造器。一个类的构造器的名称必须与该类的名称一致。要退出构造，可以使用返回语句“return;”。<br>相反，方法的作用是为了执行java代码。</li>
+</ul>
+<p>构造器和方法在下面三个方面的区别：修饰符，返回值，命名。</p>
+<ul>
+<li>修饰符：和方法一样，构造器可以有任何访问的修饰符： public, protected, private或者没有修饰package（通常被package 和 friendly调用）. 不同于方法的是，构造器不能有以下非访问性质的修饰： final,，static,，abstract，synchronized，native。</li>
+<li>返回类型：方法能返回任何类型的值或者无返回值（void），构造器没有返回值，也不需要void。</li>
+<li>两者的命名：构造器通常用首字母为大写的一个名词开始命名，并且使用和类相同的名字命名。而方法则不同，方法通常用小写字母英文动词开始，其后跟随首字母为大写的名称、形容词等等组成的驼峰命名方式，方法通常更接近动词，因为它说明一个操作。</li>
+</ul>
+<p><a href="https://baike.baidu.com/item/%E6%9E%84%E9%80%A0%E5%99%A8/9844976?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%9E%84%E9%80%A0%E5%99%A8/9844976?fr=aladdin</a>  </p>
+<hr>
+<h2 id="java中类名，方法，变量，包名等大小写命名规范"><a href="#java中类名，方法，变量，包名等大小写命名规范" class="headerlink" title="java中类名，方法，变量，包名等大小写命名规范"></a>java中类名，方法，变量，包名等大小写命名规范</h2><p>类名：首字母大写，其他单词中首字母大写，其他小写<br>方法名：首字母小写，其他单词中首字母大写，其他小写<br>变量：与方法名规则同<br>包名：全部小写<br>接口interface：I开头</p>
+<hr>
+<h2 id="tomcat-目录结构"><a href="#tomcat-目录结构" class="headerlink" title="tomcat 目录结构"></a>tomcat 目录结构</h2><ul>
+<li>bin：二进制可执行文件，例如startup.bat和shutdown.bat</li>
+<li>conf：配置文件，例如：server.xml、context.xml、web.xml、tomcatusers.xml</li>
+<li>lib：tomcat所需jar包</li>
+<li>logs：日志文件</li>
+<li>temp：存放tomcat运行时产生的临时文件，当tomcat关闭后，这个目录中的文件可以删除</li>
+<li>webapps：这个目录下的每个文件夹对应一个JavaWeb应用程序</li>
+<li>work：webapps下的应用程序在运行时会自动生成文件，就在work目录下。work目录删除了也没问题，但再次运行应用程序还要再生成work目录和文件。</li>
+</ul>
+<p>ref: <a href="https://www.cnblogs.com/learn-zy/p/10365771.html" target="_blank" rel="noopener">https://www.cnblogs.com/learn-zy/p/10365771.html</a>  </p>
+<hr>
+<h2 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h2><hr>
+<p>server container<br>webserver<br>web container</p>
+<p>1）Webserver Web container Application server的区别：</p>
+<p>i）Webserver又名http server：主要处理静态网页http，css，代表作apache，ngix，IIs。速度快。</p>
+<p>ii）Web container（容器）能处理servlet，asp，php，cgi，但也可以处理静态网页，就是不专业，比如Tomcat。</p>
+<p>iii）Application server包括Web container，而且还包括JMS、JPA、Transactions、Concurrency，ejb容器等技术，比如weblogic和 webSphere，Sun Application server。tomcat+Spring+hibernate才能达到Applcaition server的功能。Application server能处理http，但不专业。</p>
+<p>CATALINA_HOME   path of bin<br>%CATALINA_HOME%\bin</p>
+<p>change conf ()</p>
+<p>conf\server.xml<br><Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" /><br>change 8080 –&gt; ?</p>
+<hr>
+<p>WEB-INF 对前端关闭对后端开放  </p>
+<hr>
+<hr>
+<h1 id="servlet-1"><a href="#servlet-1" class="headerlink" title="servlet"></a>servlet</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>servlet 接口<br>是一个依附在web服务器上的小程序</p>
+<p>servlet  单例 、 多线程 –&gt; <strong><em>一条请求只对应一个对象</em></strong></p>
+<p>CGI 公共网络接口    每一个请求 都是一个进程</p>
+<h2 id="为什么"><a href="#为什么" class="headerlink" title="为什么"></a>为什么</h2><p>是javaEE 解决网络请求的一种技术手段。</p>
+<p>好处：</p>
+<ul>
+<li>可以使用jdk main方法  –》  servlet 里 service方法</li>
+<li>Java 有的优点</li>
+<li>servlet 支持动态网页</li>
+</ul>
+<h2 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h2><ul>
+<li>实现servlet接口<ul>
+<li>实现五个方法 </li>
+</ul>
+</li>
+<li>继承 GenericServlet<ul>
+<li>前置知识： 抽象类和接口 的区别<ul>
+<li>抽象类下的方法不一定都要实现，接口下的方法是一定不实现（jdk1.8 接口里的方法可以选择性实现）</li>
+<li>实现一个接口，实现他的抽象类，    实现一个抽象类就要继承这个抽象类，成为他的子类，实现其中的没有实现的抽象方法</li>
+</ul>
+</li>
+<li>抽象方法：没有实现的方法，没有方法体的方法</li>
+<li>实现 servlet  里的四个接口，并提供了默认值，只暴露一个 service 方法供用户自定义(因为他是一个没有实现的抽象类里的抽象方法)</li>
+</ul>
+</li>
+<li>继承 HttpServlet （HttpServlet extends GenericServlet）<ul>
+<li>用static和 final 同时修饰的变量 = 常量</li>
+<li>涉及的两个 service 方法<ul>
+<li>从父类上继承的 service（ServletRequest  req , ServletResponse res）</li>
+<li>重写上一个service（专门针对http做的优化）  service（HttpServletRequest request, HttpServletResponse response）<br>  -这个方法根据请求方法不同提供了不同的doXXX方法（doXXX 首先会识别请求的method方法–&gt; form method）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="http-请求"><a href="#http-请求" class="headerlink" title="http 请求"></a>http 请求</h2><p>get post  delete put<br>浏览器只提供了get \  post 的封装</p>
+<h3 id="get-post-请求的发送方式"><a href="#get-post-请求的发送方式" class="headerlink" title="get post 请求的发送方式"></a>get post 请求的发送方式</h3><p>html中<br>get：</p>
+<ul>
+<li>url 后拼接参数</li>
+<li>表单 form<br>post：</li>
+<li>表单 form  action=”url”  method=”post”</li>
+</ul>
+<hr>
+<p>数据查询语言    DQL  –&gt; get        （查询字符串，拼接入url,可见）          长度限制：地址栏<br>数据操作语言    DML  –&gt; post   (put, delete)       (表单数据，不在url中显示)       长度限制：数据库</p>
+<h2 id="servlet生命周期"><a href="#servlet生命周期" class="headerlink" title="servlet生命周期"></a>servlet生命周期</h2><p>servlet 对象的创建时间可以通过改变 loadonstartup(可以在代码注解，也可以在web.xml配置里改变) ,默认是第一次请求时有tomcat创建的</p>
+<pre><code>3.1 servlet是单例,在web项目运行期间,一个servlet只会创建一个对象
+    web项目本身就需要在多线程的环境中运行,tomcat服务器会提供这样的多线程环境,当浏览器发送一个请求,tomcat接收到这个请求之后会开启一个线程去处理这个请求
+    在这种环境下,由于servlet是单例,所以在servlet中声明的成员变量,就会有线程安全的问题。
+    所以我们应该尽量少的在servlet中定义成员变量
+
+
+3.2 默认情况下,servlet对象是在用户第一次访问它的时候,由tomcat服务器来创建的(可以通过配置进行改变)。
+
+3.3 servlet对象创建成功之后,tomcat服务器还会调用servlet里面的init(ServletConfig config),这个有参的init方法会调用无参的init()方法,程序员就可以重写这个无参的init()方法,对创建好的servlet对象进行初始化操作.
+
+3.4 如果用户要访问这个servlet对象,那么tomcat服务器会调用这个servlet对象中的service方法,只不过service方法中又进行了方法的层层调用,最后调用到了我们重写的doGet或者是doPost方法
+
+3.5 当servlet对象被销毁的时候,tomcat服务器会调用servlet里面的destory方法,程序员就可以重写这个方法,表示当对象销毁的时候需要做哪些额外的处理
+    servlet对象被销毁的情况
+    1.服务器【正常】关闭的时候
+    2.服务器重新加载web项目的时候(reloading)
+
+
+3.6 可以通过修改web.xml文件中的配置,去改变servlet对象创建的时间
+    只要在&lt;servlet&gt;标签中,添加一个子标签&lt;load-on-startup&gt;就可以了
+
+    &lt;load-on-startup&gt;标签表示当前这个servlet需要在启动tomcat服务器期间就被创建出来
+
+    &lt;load-on-startup&gt;标签里面需要放一个正整数,数值的大小可以决定servlet对象被创建的先后顺序,数值越小就越先被创建。(如果有多个servlet对象需要在tomcat启动期间被创建的话)</code></pre><h2 id="Servlet接口中的方法"><a href="#Servlet接口中的方法" class="headerlink" title="Servlet接口中的方法"></a>Servlet接口中的方法</h2><p>4.Servlet接口中的方法(共有五个方法)  </p>
+<pre><code>//初始化servlet对象的时候被调用
+void     init(ServletConfig config)
+
+//销毁servlet对象的时候被调用
+void     destroy()
+
+//访问servlet对象的时候被调用
+void     service(ServletRequest req, ServletResponse res)
+
+//返回servlet相关信息,比如作者、版本、版权等
+//父类中(GenericServlet)默认返回一个空字符串 &quot;&quot;
+//如果需要的话,程序员可以自己重写这个方法
+String     getServletInfo()
+
+//返回ServletConfig对象
+ServletConfig     getServletConfig()</code></pre><h2 id="ServletConfig接口中的方法-共有四个方法"><a href="#ServletConfig接口中的方法-共有四个方法" class="headerlink" title="ServletConfig接口中的方法(共有四个方法)"></a>ServletConfig接口中的方法(共有四个方法)</h2><p>5.ServletConfig接口中的方法(共有四个方法)  </p>
+<pre><code>注解 代替 web.xml文件  
+
+ServletConfig接口的实现类对象,表示一个servlet在web.xml文件中的配置信息
+
+//返回servlet在web.xml文件中所配置的名字
+//也就是&lt;servlet-name&gt;这个标签中的值
+String     getServletName()  
+    配置地方：
+        注解:全限类名
+        xml: 返回名
+
+//获得在web.xml中所配置的指定名字的参数值
+//在web.xml可以通过&lt;init-param&gt;标签给servlet传参
+String     getInitParameter(String name)
+
+//获得给当前servlet传的所有参数的名字
+Enumeration     getInitParameterNames()
+
+//获得ServletContext类型对象
+//ServletContext是web项目中非常重要的一个类型对象
+ServletContext     getServletContext()</code></pre><p>6.servlet的访问  </p>
+<pre><code>使用web.xml文件里面的这个&lt;url-pattern&gt;标签映射的路径,来访问servlet
+
+6.1    在浏览器的地址栏中,直接输入servlet映射的路径来访问
+    这时候是get方式的访问,servlet中的doGet方法最终会被调用
+
+6.2 在页面中,可以使用超链接来访问servlet
+    这时候是get方式的访问,servlet中的doGet方法最终会被调用
+
+6.3 在页面中,可以使用表单发送请求去访问servlet
+    这时候默认情况下是get方式访问,但是可以通过表单里的属性值进行设置为get或者post方式
+
+6.4 将来还可以使用javascript或者在ajax中发请求访问servlet,这个时候也可以进行设置使用get方式还是post方式进行访问servlet
+
+6.5 其他的情况:
+    还可以使用标签语言来访问servlet</code></pre><p>7.get方式的访问和post方式的访问<br>    get方式访问<br>        浏览器地址栏直接输入地址访问<br>        超链接访问<br>        <image src="">访问图片<br>        外部js文件的引入<br>        外部css文件的引入<br>        表单提交数据method=”get”<br>        在javascript代码中访问<br>        在ajax中访问<br>        使用jsp相关标签访问</p>
+<pre><code>post方式访问
+    表单提交数据method=&quot;post&quot;
+    ajax中设置本次请求为post方式
+
+
+在http协议规范中,定义了四种访问方式(常见的)
+    get(查) post(改) put(增) delete(删)
+
+
+http协议规范下的请求格式(分为四部分)
+    1部分: 请求行                    
+    2部分: 请求头部/消息报头    
+    3部分: \r\n
+    4部分: 请求正文                    
+
+get方式传参数 参数在uri后面(uri和url的区别)
+    GET /hello.html?name=tom HTTP1.1
+    key: value
+    key: value
+    key: value
+    .....
+    \r\n
+
+
+post方式传参 参数在请求正文中
+    POST /hello.html HTTP1.1
+    key: value
+    key: value
+    key: value
+    .....
+    \r\n
+    name=tom
+
+
+get和post的【传参】的安全性
+    get方式的参数由于是在地址栏中显示的,所以安全性低一些,post传参的时候参数在请求正文中,相对会安全一些。但是真正重要的数据在传的过程中还会更换协议http--&gt;https,比如在网上支付的过程中
+
+
+get和post在传参过程中参数长度的限制
+    get方式传参,参数长度是要看浏览器对地址栏中字符长度的限制,也就是要看浏览器对url地址的长度限制,我们只是把参数放到url后面了。url?参数=值
+
+    post方式参数,参数长度是要看服务器一次性最多能够接受并且处理多少数据</code></pre><h2 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h2><h3 id="8-在servlet中-接受客户端传的参数"><a href="#8-在servlet中-接受客户端传的参数" class="headerlink" title="8.在servlet中,接受客户端传的参数"></a>8.在servlet中,接受客户端传的参数</h3><pre><code>不管客户端是post方式还是get方式传参,只是参数存放的位置在传输过程有所变化,但是对于servlet接收参数来讲,俩种情况都是一样的接收</code></pre><ul>
+<li>单参传递<br>getParameter  </li>
+<li>多参传递<br>getParameterValues  </li>
+<li>获取所有参数名<br>getParameterNames  </li>
+<li>获取所有参数名和参数值的键值对<code>Map&lt;string,string[]&gt;</code><br>getParameterMap  </li>
+</ul>
+<h3 id="8-1-接收单一的值-一个参数名对应一个值"><a href="#8-1-接收单一的值-一个参数名对应一个值" class="headerlink" title="8.1 接收单一的值(一个参数名对应一个值)"></a>8.1 接收单一的值(一个参数名对应一个值)</h3><pre><code>`String name = request.getParameter(&quot;name&quot;);
+String age = request.getParameter(&quot;age&quot;);
+System.out.println(name);
+System.out.println(age);`</code></pre><h3 id="8-2-一个参数名对应多个值-比如多选框"><a href="#8-2-一个参数名对应多个值-比如多选框" class="headerlink" title="8.2 一个参数名对应多个值(比如多选框)"></a>8.2 一个参数名对应多个值(比如多选框)</h3><pre><code>`String[] like = request.getParameterValues(&quot;like&quot;);
+System.out.println(Arrays.toString(like));`</code></pre><h3 id="8-3-获得本次传参中的所有参数名"><a href="#8-3-获得本次传参中的所有参数名" class="headerlink" title="8.3 获得本次传参中的所有参数名"></a>8.3 获得本次传参中的所有参数名</h3><pre><code>`Enumeration&lt;String&gt; names = request.getParameterNames();
+while(names.hasMoreElements()){
+    String str = names.nextElement();
+    System.out.println(str);
+}
+打印结果:
+name
+age
+like`  </code></pre><h3 id="8-4-获得本次传参中的所有参数及对应的值"><a href="#8-4-获得本次传参中的所有参数及对应的值" class="headerlink" title="8.4 获得本次传参中的所有参数及对应的值"></a>8.4 获得本次传参中的所有参数及对应的值</h3><pre><code>`Map&lt;String, String[]&gt; map = request.getParameterMap();
+for(String key:map.keySet()){
+    System.out.println(key+&quot; : &quot;+Arrays.toString(map.get(key)));
+}
+打印结果:
+name : [tom]
+age  : [20]
+like : [0, 1]`</code></pre><h2 id="中文乱码"><a href="#中文乱码" class="headerlink" title="中文乱码"></a>中文乱码</h2><h3 id="9-客户端传参过程中-出现中文乱码"><a href="#9-客户端传参过程中-出现中文乱码" class="headerlink" title="9.客户端传参过程中,出现中文乱码"></a>9.客户端传参过程中,出现中文乱码</h3><ul>
+<li>开发环境编码保持一致</li>
+<li>浏览器页面展示编码</li>
+<li>Eclipse 工程环境编码</li>
+<li>请求和响应过程，修改编码</li>
+<li>数据库编码（数据库本身编码；连接数据库时的编码设置）</li>
+</ul>
+<h3 id="9-1-get方式传参-中文乱码"><a href="#9-1-get方式传参-中文乱码" class="headerlink" title="9.1 get方式传参,中文乱码"></a>9.1 get方式传参,中文乱码</h3><pre><code>需要在tomcat服务器中server.xml文件中进行配置  
+    `在&lt;Connector&gt;中加入新的属性URIEncoding=&quot;XXX&quot;
+    &lt;Connector URIEncoding=&quot;UTF-8&quot; connectionTimeout=&quot;20000&quot; port=&quot;8989&quot; protocol=&quot;HTTP/1.1&quot; redirectPort=&quot;8443&quot;/&gt;`  </code></pre><h3 id="9-2-post方式传参-中文乱码"><a href="#9-2-post方式传参-中文乱码" class="headerlink" title="9.2 post方式传参,中文乱码"></a>9.2 post方式传参,中文乱码</h3><pre><code>在使用request获取参数【之前】,先把request中的编码进行设置  
+request.setCharacterEncoding(&quot;UTF-8&quot;);
+String name = request.getParameter(&quot;name&quot;);
+System.out.println(name);</code></pre><h3 id="9-3-servlet中使用io流写数据到浏览器-浏览器里面-显示中文乱码"><a href="#9-3-servlet中使用io流写数据到浏览器-浏览器里面-显示中文乱码" class="headerlink" title="9.3 servlet中使用io流写数据到浏览器,浏览器里面  显示中文乱码"></a>9.3 servlet中使用io流写数据到浏览器,浏览器里面  显示中文乱码</h3><pre><code>http协议规范中响应的格式为:
+1部分 响应状态行
+2部分 响应头部/消息报头
+3部分 \r\n
+4部分 响应正文
+
+如果响应头部信息中没有设置编码,那么浏览器会默认使用简体中文(GBK)来解析响应中的内容
+
+所以在使用 io流之前,需要设置一下response中的编码,同时还要告诉浏览器本次响应内容的编码是什么
+//设置response中的编码为UTF-8
+response.setCharacterEncoding(&quot;UTF-8&quot;);
+//设置响应头部,告诉浏览器响应内容编码为utf-8
+response.setContentType(&quot;text/html;charset=utf-8&quot;);</code></pre><h3 id="9-4-Unicode-字符集-和UTF-8-编码规则"><a href="#9-4-Unicode-字符集-和UTF-8-编码规则" class="headerlink" title="9.4    Unicode(字符集)和UTF-8(编码规则)"></a>9.4    Unicode(字符集)和UTF-8(编码规则)</h3><pre><code>Unicode符号范围     | UTF-8编码方式
+十六进制              二进制
+0000 0000-0000 007F | 0xxxxxxx
+0000 0080-0000 07FF | 110xxxxx 10xxxxxx
+0000 0800-0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx
+0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</code></pre><h2 id="跳转（内部跳转）和重定向（外部跳转）"><a href="#跳转（内部跳转）和重定向（外部跳转）" class="headerlink" title="跳转（内部跳转）和重定向（外部跳转）"></a>跳转（内部跳转）和重定向（外部跳转）</h2><h3 id="10-servlet中的跳转和重定向"><a href="#10-servlet中的跳转和重定向" class="headerlink" title="10.servlet中的跳转和重定向"></a>10.servlet中的跳转和重定向</h3><pre><code>例如:访问一个servlet,需要让servlet把一个html页面返回,我们之前的方式需要这样做
+    request.setCharacterEncoding(&quot;UTF-8&quot;);
+    response.setCharacterEncoding(&quot;UTF-8&quot;);
+
+    response.setContentType(&quot;text/html;charset=utf-8&quot;);
+
+    PrintWriter out = response.getWriter();
+    String realPath = getServletContext().getRealPath(&quot;/hello.html&quot;);
+    BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(realPath)));
+
+    String line = null;
+    while((line=in.readLine())!=null){
+        out.println(line);
+    }
+    out.flush();
+
+    in.close();
+    out.close();
+
+    这样可以实现效果,但是太麻烦了,而且很多都是固定的代码,所以可以进行封装.那么服务器内部跳转或者是客户端重定向都可以帮我们很容易的完成这个功能</code></pre><h3 id="10-1-服务器内部跳转"><a href="#10-1-服务器内部跳转" class="headerlink" title="10.1 服务器内部跳转"></a>10.1 服务器内部跳转</h3><pre><code>第一种情况:
+    服务器内部跳转到一个页面中
+    例如:
+    String url = &quot;/hello.html&quot;;
+    //获得一个指向url的跳转对象
+    RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+    //进行跳转 跳转的同时把request和response转发给要跳转到的url
+    dispatcher.forward(request, response);
+
+    或者:
+    String url = &quot;/hello.html&quot;;
+    request.getRequestDispatcher(url).forward(request, response);
+
+
+第二种情况:
+    服务器内部跳转到一个servlet中
+    String url = &quot;/TestServlet&quot;;
+    request.getRequestDispatcher(url).forward(request, response);
+
+
+
+
+服务器内部跳转的特点:
+    1.需要使用request对象来完成
+    2.服务器内部跳转期间,其实就是把请求request和响应response转发到一下资源中,所以在整个跳转期间所有涉及到的资源使用的都是同一个request和response。(我们可以利用这个特点将来在多个资源之间进行数据的传递)
+    3.服务器内部跳转,【不会】改变浏览器地址栏中的地址</code></pre><h3 id="10-2-客户端重定向"><a href="#10-2-客户端重定向" class="headerlink" title="10.2 客户端重定向"></a>10.2 客户端重定向</h3><pre><code>第一种情况:
+    客户端重定向到一个页面中
+    String url = &quot;hello.html&quot;;
+    respons e.sendRedirect(url);
+
+第二种情况:
+    客户端重定向到一个servlet中
+    String url = &quot;TestServlet&quot;;
+    response.sendRedirect(url);
+
+客户端重定向的特点:  
+    1.需要使用response对象来完成
+    2.每一个客户端重定向,浏览器都会发出新请求,也就意味着在服务器内部会产生新的request对象和response对象
+    3.客户端重定向,【会】改变浏览器地址栏中的地址</code></pre><p>对比跳转和重定向的区别</p>
+<p>跳转  </p>
+<ol>
+<li>使用request完成  </li>
+<li>跳转的本质是在服务器内部把请求和响应进行转发,转发给下一个资源  </li>
+<li>如果request中有数据,在跳转到的每一个资源中都可以拿到一个数据(从开始到结束只有一个request对象)  </li>
+<li>由于服务器跳转是把请求和响应在服务器内部中来回转发,所以浏览器的地址栏中的地址是不受影响的,所以始终还是第一次发出请求的地址  </li>
+<li>在设置跳转的资源地址的时候,路径的前面一般要加上/     <blockquote>
+<p>例如 String path = “/a.html”;  </p>
+</blockquote>
+</li>
+</ol>
+<p>重定向  </p>
+<ol>
+<li><p>使用response完成  </p>
+</li>
+<li><p>重定向的本质是把资源路径通过响应返回给浏览器(通过响应头信息),让浏览器向这个新地址发送一个新请求  </p>
+</li>
+<li><p>如果request中有数据,重定向后在新的资源中是拿不到这个数据的(重定向会发一个全新的请求,但是数据在上一个老的请求中)  </p>
+</li>
+<li><p>由于重定向让浏览器发出新的请求,所以浏览器地址栏中的地址会变成新请求的地址  </p>
+</li>
+<li><p>在设置重定向的资源地址的时候,路径的前面一般不加/</p>
+<blockquote>
+<p>例如 String path = “a.html”;<br> 但是如果一定要加/的话,那么还需要额外加上一个项目名<br> 例如 String path = “/web_test/a.html”;<br> 同时也可以动态获取项目:req.getContextPath()</p>
+<pre><code>String path = req.getContextPath()+&quot;/a.html&quot;;</code></pre></blockquote>
+</li>
+</ol>
+<h2 id="web项目中的路径"><a href="#web项目中的路径" class="headerlink" title="web项目中的路径"></a>web项目中的路径</h2><h3 id="1-web项目中的路径"><a href="#1-web项目中的路径" class="headerlink" title="1.web项目中的路径"></a>1.web项目中的路径</h3><h3 id="1-1-路径中最左边的"><a href="#1-1-路径中最左边的" class="headerlink" title="1.1 路径中最左边的/"></a>1.1 路径中最左边的/</h3><pre><code>/a/b/c/d
+我们要讨论的是类似这样的路径中的最左边的/,除此之外其他/都是正常的路径分割符
+
+客户端解析路径最左边的/
+    代表的是端口号后面的/
+    http://ip:port/
+    例如:
+        在页面中有一个超链接
+        &lt;a href=&quot;/hello.html&quot;&gt;测试&lt;/a&gt;
+        当我们点击这个超链接的时候,地址栏中的中会变成:
+        http://ip:port/hello.html
+
+    例如:
+        在servlet完成一个客户端重定向操作
+        String url = &quot;/hello.html&quot;;
+        response.sendRedirect(url);
+        由于客户端重定是把url地址返回给浏览器,浏览器解析之后,发出新的请求,这时候浏览器地址栏中的url地址变为:
+        http://ip:port/hello.html
+
+
+    所以在这俩种情况下,url最左边加了/,那么运行之后出现404报错,查看浏览器地址栏后,发现请求的url地址中缺少了项目名
+
+服务器端解析路径最左边的/
+    代表的是项目名后面的/
+    http://ip:port/项目名/
+
+    例如:
+        在web.xml文件中配置servlet的映射路径
+        &lt;url-pattern&gt;/TestServlet&lt;/url-pattern&gt;
+        这个最左边的/是由服务器端进行解析的,所以它代表的是项目名后的/,浏览器进行访问的时候就要写这样的UR地址:
+        http://ip:port/项目名/TestServlet
+
+    例如:
+        在servlet中进行服务器内部跳转操作
+        String url = &quot;/TestServlet&quot;;
+        request.getRequestDispatcher(url).forward(request, response);
+        这个最左边的/是由服务器端进行解析的,所以它代表的是项目名后的/,最后内部跳转所访问的url地址就是:
+        http://ip:port/项目名/TestServlet</code></pre><h3 id="1-2-HttpServletRequest中和路径相关的方法"><a href="#1-2-HttpServletRequest中和路径相关的方法" class="headerlink" title="1.2 HttpServletRequest中和路径相关的方法"></a>1.2 HttpServletRequest中和路径相关的方法</h3><pre><code>// /web_servlet
+request.getContextPath();
+
+// /PathServlet
+request.getServletPath();
+
+// http://127.0.0.1:8989/web_servlet/PathServlet
+request.getRequestURL();
+
+// /web_servlet/PathServlet
+request.getRequestURI();</code></pre><h3 id="1-3-ServletContext中和路径相关的方法"><a href="#1-3-ServletContext中和路径相关的方法" class="headerlink" title="1.3 ServletContext中和路径相关的方法"></a>1.3 ServletContext中和路径相关的方法</h3><pre><code>ServletContext servletContext = getServletContext();
+
+// /web_servlet
+servletContext.getContextPath();
+
+//获得一个资源的绝对路径
+// D:\jd2019\apache-tomcat-8.5.38\webapps\jd1911-servlet\
+servletContext.getRealPath(&quot;/&quot;);
+
+//获得一个指定路径下面所有的资源路径名
+//    例如:
+    /js/
+    /META-INF/
+    /a.html
+    /param.html
+    /login.html
+    /WEB-INF/
+    /index.html
+    /image/
+    /css/
+    /encoding.html
+servletContext.getResourcePaths(&quot;/&quot;);  </code></pre><h3 id="1-4-相对路径和绝对路径"><a href="#1-4-相对路径和绝对路径" class="headerlink" title="1.4 相对路径和绝对路径"></a>1.4 相对路径和绝对路径</h3><pre><code>绝对路径
+    使用servletContext.getRealPath(&quot;....&quot;)就可以获得一个资源的绝对路径
+
+web形式的路径
+    例如: /hello.html
+    该路径会解析为:
+
+    http://ip:port/hello.html
+    或者
+    http://ip:port/项目名/hello.html
+
+    具体是哪一种路径,要看解析这个/的是客户端还是服务器端
+
+相对路径
+    例1:
+    假设path.html和hello.html在同一个目录下
+    path.html页面中有一个超链接
+    &lt;a href=&quot;hello.html&quot;&gt;测试&lt;/a&gt;
+    超链接中的这个路径就是一个相对路径,相对于当前路径,当前路径指的是浏览器地址栏中这个时候的路径
+    所以当我们点击超链接的时候,就是在当前路径后面加上这个相对路径
+
+    访问path.html的url地址:
+    http://127.0.0.1:8989/web_servlet/path.html
+
+    点击超链接之后,地址栏中的中变为:
+    当前路径+相对路径
+    http://127.0.0.1:8989/web_servlet/
+    +
+    hello.html
+    =
+    http://127.0.0.1:8989/web_servlet/hello.html
+
+
+    例2:
+    假设path.html和hello.html不在同一个目录下,path.html在test目录下
+    path.html页面中有一个超链接
+    &lt;a href=&quot;hello.html&quot;&gt;测试&lt;/a&gt;
+    超链接中的这个路径就是一个相对路径,相对于当前路径,当前路径指的是浏览器地址栏中这个时候的路径
+    所以当我们点击超链接的时候,就是在当前路径后面加上这个相对路径
+
+    访问path.html的url地址:
+    http://127.0.0.1:8989/web_servlet/test/path.html
+    点击超链接之后,地址栏中的中变为:
+    当前路径+相对路径
+    http://127.0.0.1:8989/web_servlet/test
+    +
+    hello.html
+    =
+    http://127.0.0.1:8989/web_servlet/test/hello.html
+
+    这时候出现404错误,页面找不到
+    这个时候可以修改这个相对路径,使得点击超链接后可以正常访问
+    &lt;a href=&quot;../hello.html&quot;&gt;测试&lt;/a&gt;
+
+
+    例3:
+    假设path.html和hello.html在同一个目录下
+    path.html页面中有一个超链接
+    &lt;a href=&quot;hello.html&quot;&gt;测试&lt;/a&gt;
+    web.xml中给PathServlet映射了一个路径
+    &lt;url-pattern&gt;/servlet/PathServlet&lt;/url-pattern&gt;
+    访问这个servlet之后,会进行一个服务器内部跳转,跳转到path.html页面
+    浏览器显示path.html后,再点击页面中的超链接
+
+    先访问servlet
+    http://127.0.0.1:8989/web_servlet/servlet/PathServlet
+
+    然后点击页面中的超链接
+    &lt;a href=&quot;hello.html&quot;&gt;测试&lt;/a&gt;
+    超链接中的这个路径就是一个相对路径,相对于当前路径,当前路径指的是浏览器地址栏中这个时候的路径
+    所以当我们点击超链接的时候,就是在当前路径后面加上这个相对路径
+
+    点击超链接之后,地址栏中的中变为:
+    当前路径+相对路径
+    http://127.0.0.1:8989/web_servlet/servlet
+    +
+    hello.html
+    =
+    http://127.0.0.1:8989/web_servlet/servlet/hello.html
+
+    所以最后又出现了404报错信息
+
+    特例（相对路径  形式的  绝对路径）
+    例4:
+    在html页面添加base标签之后,这个页面中的所有相对路径,就不再是相对于地址栏中的路径了,而是相对于base标签中设置的路径
+
+    &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;base href=&quot;http://127.0.0.1:8989/web_servlet/&quot; /&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;title&gt;path.html&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+
+        &lt;div align=&quot;center&quot;&gt;
+            &lt;a href=&quot;hello.html&quot;&gt;测试&lt;/a&gt;
+        &lt;/div&gt;
+
+    &lt;/body&gt;
+    &lt;/html&gt;</code></pre><h3 id="总结：内外部跳转-amp-相对、绝对路径"><a href="#总结：内外部跳转-amp-相对、绝对路径" class="headerlink" title="总结：内外部跳转 &amp; 相对、绝对路径"></a>总结：内外部跳转 &amp; 相对、绝对路径</h3><ul>
+<li>内外部跳转<ul>
+<li>需要知晓是处于“客户端”OR“服务器端”（例如： html or servlet）<ul>
+<li>servlet、 客户端、外部跳转/重定向、response.sendRedirect(URL)</li>
+<li>servlet、 服务器端、内部跳转、request.getRequestDispatcher(URL)</li>
+<li>推荐使用<ul>
+<li>重定向推荐使用  相对路径</li>
+<li>内部跳转推荐使用 绝对路径    因为 绝对路径 “/” 在服务器端会被解析到项目名后的“/“</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>也要考虑 相对、绝对路径<ul>
+<li>绝对路径中要考虑 首个“/” 解析问题<ul>
+<li>“/“要考虑 “客户端”OR”服务器端” 解析<ul>
+<li>C 端： 只解析到 ….端口号/    （html、rsponse对象）</li>
+<li>S 端： 解析到 ….端口号/项目名/    （java代码、request对象）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>相对路径形式<ul>
+<li>./    当前路径（一般省略，一般的相对路径就是这种写法）</li>
+<li>../    当前路径的上一层路径</li>
+</ul>
+</li>
+<li>特例（相对路径  形式的  绝对路径）<ul>
+<li>html页面添加base标签 可以将绝对路径头封装，对外展示相对路径  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="request-session-application"><a href="#request-session-application" class="headerlink" title="request session application"></a>request session application</h2><h3 id="2-request-session-application"><a href="#2-request-session-application" class="headerlink" title="2.request session application"></a>2.request session application</h3><pre><code>request session application</code></pre><h3 id="2-1-这三种对象可以在服务器内部帮我们保存数据以及传递数据"><a href="#2-1-这三种对象可以在服务器内部帮我们保存数据以及传递数据" class="headerlink" title="2.1 这三种对象可以在服务器内部帮我们保存数据以及传递数据."></a>2.1 这三种对象可以在服务器内部帮我们保存数据以及传递数据.</h3><pre><code>     类型(接口)      对象名
+HttpServletRequest   request        一次请求
+HttpSession            session    一段会话（发起请求会话开始 --&gt; 关闭会话或会话过期）
+ServletContext        application        整个应用(从服务器开启到服务器正常关闭)</code></pre><h3 id="2-2-doGet或者doPost中怎么拿到这三种对象"><a href="#2-2-doGet或者doPost中怎么拿到这三种对象" class="headerlink" title="2.2 doGet或者doPost中怎么拿到这三种对象"></a>2.2 doGet或者doPost中怎么拿到这三种对象</h3><pre><code>request对象
+    在doGet或者doPost方法的参数中
+session对象
+    HttpSession session = request.getSession();
+application对象
+    request.getServletContext();
+    或者
+    this.getServletContext();
+    或者
+    request.getSession().getServletContext();
+    或者
+    this.getServletConfig().getServletContext();
+
+注意:无论哪一种方式,拿到的都是同一个application对象</code></pre><h3 id="2-3-这三种对象的生命周期及作用范围"><a href="#2-3-这三种对象的生命周期及作用范围" class="headerlink" title="2.3    这三种对象的生命周期及作用范围"></a>2.3    这三种对象的生命周期及作用范围</h3><pre><code>request对象
+    生命周期:
+        客户端每次发请求,服务器就会创建一个新的request对象,本次访问结束后,该request对象就会被销毁
+    作用范围:
+        使用request存/取数据只能在一次请求之内起作用.比如服务器内部跳转的时候(因为内部跳转客户端只发一次请求).
+    注意:客户端重定向是不行的,因为客户端重定向会发出多个请求(多个新的request对象).
+
+session对象 (会话)
+    获得session对象的三种方式:
+
+    //如果request有对应的session,则返回这个session,如果request没有对应的session,则创建一个新的session并返回
+    HttpSession session = request.getSession(true);
+
+    //如果request有对应的session,则返回这个session,,则返回null
+    HttpSession session = request.getSession(false);如果request没有对应的session
+
+    //等同于request.getSession(true);
+    HttpSession session = request.getSession();
+
+    生命周期:
+        getSession()方法第一次被调用时创建session对象。
+
+        session.invalidate()调用的时候会销毁session
+
+        session如果自动超时的话,也会被销毁
+        session默认超时时间为30分钟
+        session的超时时间可以在代码中设置或者在web.xml中设置
+            代码中设置:session.setMaxInactiveInterval(5); 5秒
+
+            web.xml中设置:
+                1分钟超时,负数或者0为不限制时间
+                &lt;session-config&gt;  
+                    &lt;session-timeout&gt;1&lt;/session-timeout&gt;  
+                &lt;/session-config&gt;
+        session超时时间是指:客户端不与服务器进行交互的时间
+
+    作用范围:
+        在一个会话之中起作用.一个会话中可以有多个request请求,所以放在session中的数据,可以被多个请求所共享.
+
+    思考:每次request对象创建之后,服务器怎么知道这个request和哪个session对象相对应?
+        Jsessionid 存于 cookie
+
+    注意:注意服务器正常关闭和非正常关闭对session对象的影响(session被序列化的问题)
+
+application对象
+    ServletContext被称为应用上下文/servlet上下文
+    生命周期:
+        启动tomcat服务器的时候,就会被创建
+        关闭tomcat服务器的时候,就会被销毁
+        而且每个项目在运行期间,都会有且只有一个application对象
+
+    作用范围:整个项目在运行期间,只有一个application对象,所以这个对象是所有用户共享的,大家都可以向这个对象里面存值,也可以再拿出来.因为这个对象一个项目中只有一个.</code></pre><h3 id="2-4-使用这三种对象存-取数据"><a href="#2-4-使用这三种对象存-取数据" class="headerlink" title="2.4    使用这三种对象存/取数据"></a>2.4    使用这三种对象存/取数据</h3><pre><code>键值对（string , obj）
+存值:
+request.setAttribute(&quot;key&quot;, value);
+session.setAttribute(&quot;key&quot;, value);
+application.setAttribute(&quot;key&quot;, value);
+
+取值: 
+request.getAttribute(&quot;key&quot;);
+session.getAttribute(&quot;key&quot;);
+application.getAttribute(&quot;key&quot;);</code></pre><h2 id="会话追踪技术-cookie"><a href="#会话追踪技术-cookie" class="headerlink" title="会话追踪技术:cookie"></a>会话追踪技术:cookie</h2><h3 id="3-会话追踪技术-cookie"><a href="#3-会话追踪技术-cookie" class="headerlink" title="3.会话追踪技术:cookie"></a>3.会话追踪技术:cookie</h3><pre><code>session 只有一种表现形式：java 对象，HttpSession    （只能在后台操作）
+cookie  两种表现形式    cookie类、文件    （前后台都可操作）</code></pre><h3 id="3-1-http协议的访问是无状态的访问"><a href="#3-1-http协议的访问是无状态的访问" class="headerlink" title="3.1 http协议的访问是无状态的访问"></a>3.1 http协议的访问是无状态的访问</h3><pre><code>当前访问是不会知道之前访问的状态的.(http协议的访问是不会帮我们保存访问的记录/痕迹的)。</code></pre><h3 id="3-2-有些时候需要记录之前的访问状态"><a href="#3-2-有些时候需要记录之前的访问状态" class="headerlink" title="3.2 有些时候需要记录之前的访问状态"></a>3.2 有些时候需要记录之前的访问状态</h3><pre><code>比如在购物网站的时候,第一次访问点击购买了一个手机,第二次访问点击购买了一个电脑,第三次访问点击购物车结算,这个时候我们就必须知道前俩次访问的时候购买了什么,要不然就没有方法去结算。
+所以我们就有了会话追踪技术来解决这个访问无状态的问题</code></pre><h3 id="3-3-session和cookie的位置"><a href="#3-3-session和cookie的位置" class="headerlink" title="3.3 session和cookie的位置"></a>3.3 session和cookie的位置</h3><pre><code>session是保存在服务器端的一个对象.客户端是没有session的.
+cookie在客户端和服务器端都会有。但是存在的形式不一样.在客户端cookie是以本地文件(浏览器管理的文件)的形式存在的,在服务器端是以java对象的形式存在.我们平时说说的cookie都是指的客户端文件形式存在的cookie</code></pre><h3 id="3-4-session和cookie的作用"><a href="#3-4-session和cookie的作用" class="headerlink" title="3.4 session和cookie的作用"></a>3.4 session和cookie的作用</h3><pre><code>session是在服务器端保存用户的相关信息,cookie是在客户端保存用户的相关信息。同时cookie还可以在客户端保存session的信息,例如session的id值</code></pre><h3 id="3-5-session和cookie之间的关系"><a href="#3-5-session和cookie之间的关系" class="headerlink" title="3.5 session和cookie之间的关系"></a>3.5 session和cookie之间的关系</h3><pre><code>1.客户端访问服务器的时候,假设服务器创建了一个session对象,服务器端的内存里面同时可能有好多个session对象,分别对应着不同客户端的访问,每一个session对象都有一个唯一的id值,叫做JSESSIONID。
+
+2.服务器端给客户端产生一个session对象后,会通过这次访问的response对象把这个session的JSESSIONID的值返回给浏览器,浏览器接收到后会把这个值以一个cookie文件的形式保存起来.
+
+3.在此之后,这个浏览器再发请求到服务器的时候,就会把之前保存在cookie文件中的JSESSIONID的值传给服务器,服务器通过这个JESSIONID的值就能够知道服务器内存中是哪一个session对象和当前这个客户端对应.
+
+4.这样以来,就能到达一个效果,客户端的每一次访问,在服务器端都能够拿到相同的一个session对象,从而实现不同请求之间通过相同的session对象进行数据的共享.</code></pre><h3 id="3-6-服务器端向浏览器写回cookie"><a href="#3-6-服务器端向浏览器写回cookie" class="headerlink" title="3.6 服务器端向浏览器写回cookie"></a>3.6 服务器端向浏览器写回cookie</h3><pre><code>response对象会把cookie带回到浏览器,然后浏览器把cookie对象中的内容保存到对应的一个cookie的文件中。
+
+//创建cookie对象
+Cookie c1 = new Cookie(&quot;name&quot;,&quot;tom&quot;);
+Cookie c2 = new Cookie(&quot;msg&quot;,&quot;hello&quot;);
+//设置cookie的有效时间
+c1.setMaxAge(60*60*24*365);
+c2.setMaxAge(60*60*24*365*10);
+//把cookie放到response里面
+response.addCookie(c1);
+response.addCookie(c2);
+
+注意:如果没有设置cookie生效的时间,那么这个cookie就是会话cookie,当关闭浏览器的时候cookie就是失效了。</code></pre><h3 id="3-7-servlet中拿到从浏览器发送过来的cookie文件中的数据"><a href="#3-7-servlet中拿到从浏览器发送过来的cookie文件中的数据" class="headerlink" title="3.7 servlet中拿到从浏览器发送过来的cookie文件中的数据"></a>3.7 servlet中拿到从浏览器发送过来的cookie文件中的数据</h3><pre><code>//从request中拿到一个cookie数组
+//如果没任何cookie数据则返回null
+Cookie[] cookies = request.getCookies();
+//遍历数组 拿出key和value
+for(Cookie c:cookies){
+    String key = c.getName();
+    String value = c.getValue();
+    System.out.println(key+&quot; : &quot;+value);
+}</code></pre><h2 id="URL重写-也属于会话追踪技术的一种"><a href="#URL重写-也属于会话追踪技术的一种" class="headerlink" title="URL重写 (也属于会话追踪技术的一种)"></a>URL重写 (也属于会话追踪技术的一种)</h2><h3 id="4-URL重写-也属于会话追踪技术的一种"><a href="#4-URL重写-也属于会话追踪技术的一种" class="headerlink" title="4.URL重写 (也属于会话追踪技术的一种)"></a>4.URL重写 (也属于会话追踪技术的一种)</h3><h3 id="4-1-URL重写的作用"><a href="#4-1-URL重写的作用" class="headerlink" title="4.1 URL重写的作用"></a>4.1 URL重写的作用</h3><pre><code>当前浏览器把cookie禁用之后,浏览器在发请求的时候,就不会把cookie带到服务器端了(其中最重要的也包括JSESSIONID),因为禁用cookie之后浏览器拒绝一切站点向浏览器写入cookie的(注意在禁用之前是否已经有一些已经存在的cookie了),这样的话,浏览器发送请求的时候就不能在服务器端根据JSESSIONID来拿到之前创建的session对象了(因为发送请求的时候没有把JSESSIONID的值传给服务器)。URL重写就是解决这个问题的</code></pre><h3 id="4-2-JSESSIONID从客户端传给服务器的方式"><a href="#4-2-JSESSIONID从客户端传给服务器的方式" class="headerlink" title="4.2 JSESSIONID从客户端传给服务器的方式"></a>4.2 JSESSIONID从客户端传给服务器的方式</h3><pre><code>第一种方式:
+    JSESSIONID保存在cookie文件中,浏览器发送请求的时候把这个cookie文件中的数据带给服务器.
+第二种方式:
+    通过传参的方式,把JSESSIONID的值通过要访问的URL传给服务器.(URL重写)</code></pre><h3 id="4-3-URL重写的实现"><a href="#4-3-URL重写的实现" class="headerlink" title="4.3 URL重写的实现"></a>4.3 URL重写的实现</h3><pre><code>String url = response.encodeURL(&quot;url&quot;);
+这个方法参数就是我们要访问的URL,这个方法会把重写后的URL以字符串的形式返回.
+
+例如:在一个超链接中,本来要访问的URL是:
+        &lt;a href=&quot;TestServlet&quot;&gt;
+重写后:
+&lt;a href=&quot;TestServlet;jsessionid=5480EF9016295A73DC56731A2F123246&quot;&gt;
+
+注意:response.encodeURL(&quot;url&quot;)方法
+如果当前没有使用到session，则直接返回参数url。 
+同时还要注意禁用cookie后是不是已经把之前的cookie给删除了</code></pre><hr>
+<p>java 里 不能像C语言里操作指针指向。</p>
+<p>destroy 是在正常关闭服务器的情况下触发</p>
+<hr>
+<p>input 里的 name 是 传递“值” 的专有名，值（展示值 和 传递值）</p>
+<h2 id="解决乱码问题"><a href="#解决乱码问题" class="headerlink" title="解决乱码问题"></a>解决乱码问题</h2><p>浏览器展示<br>网页文件的编码（html 文件）<br>eclipse 工程环境编码<br>请求和响应过程的编码<br>    三行声明（setCharacterEncoding、 setContentType）  –&gt; 在使用IO流之前，不能放在中间；<br>数据库编码</p>
+<h2 id="关于跳转问题"><a href="#关于跳转问题" class="headerlink" title="关于跳转问题"></a>关于跳转问题</h2><p>URI:  统一资源标识符<br>URL： 统一资源定位符</p>
+<p>第一个“/” 解析问题，浏览器和服务器解析的区别<br>浏览器解析：将其视为端口号后面的第一个“/”           –&gt;   写路径时写的多(–&gt; 自动补充：协议名+主机号+端口号)，自补充项目名<br>服务器解析：包括了端口号之前并加上了项目名–》 项目名之后的第一个“/”        –&gt; 路径写的少，无需补充</p>
+<p>以“/” 开头路径  绝对路径  (从根开始检索)<br>/html/index.html<br>开头无斜杠“/” ，相对路径  【实际是省略了： ./   –&gt;  当前文件夹下的XXX 】<br>html/index.html</p>
+<p>本机资源“\”<br>网络资源“/”</p>
+<h2 id="关闭浏览器"><a href="#关闭浏览器" class="headerlink" title="关闭浏览器"></a>关闭浏览器</h2><p>可能会清除cookie<br>一定会关闭session  –&gt; 空指针</p>
+<h2 id="servlet-里main-方法"><a href="#servlet-里main-方法" class="headerlink" title="servlet 里main 方法"></a>servlet 里main 方法</h2><p>通过在 web.xml 文件里修改达到和main() 一样的作用  </p>
+<h2 id="pojo-–-gt-JavaBean"><a href="#pojo-–-gt-JavaBean" class="headerlink" title="pojo –&gt; JavaBean"></a>pojo –&gt; JavaBean</h2><p>描述数据特征的类</p>
+<p>pojo 只有属性       属性存储： <code>map&lt;string, string&gt;</code>  string[]、 object (衍生出 bean)<br>JavaBean  组件化 （扩充） 属性+ 方法（get , set ）+ 简单逻辑（boolean性别转换-&gt; string）</p>
+<p>一般JavaBean 时数据库来生成</p>
+<h2 id="session-补充"><a href="#session-补充" class="headerlink" title="session 补充"></a>session 补充</h2><p>jsession 是session的一个标识。  </p>
+<p>session机制是一种服务器端的机制，服务器使用一种类似于散列表的结构（也可能就是使用散列表）来保存信息。</p>
+<p>两种Jsession 传递方法：  </p>
+<p>第一种：创建 session id  </p>
+<pre><code>当程序需要为某个客户端的请求创建一个session的时候，服务器首先检查这个客户端的请求里是否已包含了一个session标识 - 称为 session id，如果已包含一个session id则说明以前已经为此客户端创建过session，服务器就按照session id把这个 session检索出来使用（如果检索不到，可能会新建一个），如果客户端请求不包含session id，则为此客户端创建一个session并且生成一个与此session相关联的session id，session id的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串，这个 session id将被在本次响应中返回给客户端保存。
+
+保存这个session id的方式可以采用cookie，这样在交互过程中浏览器可以自动的按照规则把这个标识发挥给服务器。一般这个cookie的名字都是类似于SEEESIONID，而。比如weblogic对于web应用程序生成的cookie，JSESSIONID= ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764，它的名字就是 JSESSIONID。</code></pre><p>另一种：URL重写  </p>
+<pre><code>由于cookie可以被人为的禁止，必须有其他机制以便在cookie被禁止时仍然能够把session id传递回服务器。经常被使用的一种技术叫做URL重写，就是把session id直接附加在URL路径的后面，
+附加方式也有两种，
++ 一种是作为URL路径的附加信息，表现形式为http://...../xxx;jsessionid= ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764
++ 作为查询字符串附加在URL后面，表现形式为http://...../xxx?jsessionid=ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764  </code></pre><p>这两种方式对于用户来说是没有区别的，只是服务器在解析的时候处理的方式不同，采用第一种方式也有利于把session id的信息和正常程序参数区分开来。</p>
+<p>为了在整个交互过程中始终保持状态，就必须在每个客户端可能请求的路径后面都包含这个session id。</p>
+<p>第三种： 表单隐藏字段  </p>
+<pre><code>    另一种技术叫做表单隐藏字段。就是服务器会自动修改表单，添加一个隐藏字段，以便在表单提交时能够把session id传递回服务器。比如下面的表单
+`&lt;form name=&quot;testform&quot; action=&quot;/xxx&quot;&gt;&lt;input type=&quot;text&quot;&gt;&lt;/form&gt;`
+
+在被传递给客户端之前将被改写成
+
+`&lt;form name=&quot;testform&quot; action=&quot;/xxx&quot;&gt;&lt;input type=&quot;hidden&quot; name=&quot;jsessionid&quot; value=&quot;ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764&quot;&gt;&lt;input type=&quot;text&quot;&gt;&lt;/form&gt;`
+
+    这种技术现在已较少应用，笔者接触过的很古老的iPlanet6(SunONE应用服务器的前身)就使用了这种技术。实际上这种技术可以简单的用对action应用URL重写来代替。</code></pre><p>session误解（session失效，其实时 session id 消失了，导致无法找到session对象）</p>
+<pre><code>在谈论session机制的时候，常常听到这样一种误解“只要关闭浏览器，session就消失了”。  
+其实可以想象一下会员卡的例子，除非顾客主动对店家提出销卡，否则店家绝对不会轻易删除顾客的资料。  
+对session来说也是一样的，除非程序通知服务器删除一个session，否则服务器会一直保留，程序一般都是在用户做log off的时候发个指令去删除session。然而浏览器从来不会主动在关闭之前通知服务器它将要关闭，因此服务器根本不会有机会知道浏览器已经关闭，之所以会有这种错觉，是大部分session机制都使用会话cookie来保存session id，而关闭浏览器后这个 session id就消失了，再次连接服务器时也就无法找到原来的session。
+
+如果服务器设置的cookie被保存到硬盘上，或者使用某种手段改写浏览器发出的HTTP请求头，把原来的session id发送给服务器，则再次打开浏览器仍然能够找到原来的session。
+
+恰恰是由于关闭浏览器不会导致session被删除，迫使服务器为seesion设置了一个失效时间，当距离客户端上一次使用session的时间超过这个失效时间时，服务器就可以认为客户端已经停止了活动，才会把session删除以节省存储空间。  </code></pre><h1 id="JSP-自学版"><a href="#JSP-自学版" class="headerlink" title="JSP(自学版)"></a>JSP(自学版)</h1><p>ref:<br><a href="https://www.bilibili.com/video/av45618117?p=36" target="_blank" rel="noopener">https://www.bilibili.com/video/av45618117?p=36</a></p>
+<p>JSP -转译-&gt;  JspServlet  -(JspServlet里的<strong>JspService –&gt; service –&gt; __JspService 即： 父类的service就是实现</strong>JspService )-&gt;  HTML  </p>
+<p>jsp –&gt; service 方法的方法体</p>
+<h2 id="Jsp-中三种注释"><a href="#Jsp-中三种注释" class="headerlink" title="Jsp 中三种注释"></a>Jsp 中三种注释</h2><pre><code>前端语言注释
+    会被转译（jsp--&gt;jspservlet），也会被发送，但不会被执行
+Java语言注释
+    会被转译（jsp--&gt;jspservlet），但不会被servlet执行
+    三大注释：
+        单行注释：//
+        多行注释：/* ...*/
+        文档注释：/** ...*/
+Jsp注释
+    不会被转译（jsp -X-&gt; jspservletX）。
+        &lt;%--注释--%&gt;
+    注意：
+        用html注释&lt;!-- --&gt; 注jsp 代码，jsp仍会被转译，html注释会被以字符串输出。（也就是说，jsp code 只能被java jsp 注释方法注释）</code></pre><h2 id="Jsp-page指令"><a href="#Jsp-page指令" class="headerlink" title="Jsp page指令"></a>Jsp page指令</h2><pre><code>page：&lt;%page 属性名=&quot;属性值&quot; 属性名=&quot;属性值&quot; 属性名=&quot;属性值&quot; ....%&gt;
+    language:  
+    import: 用逗号隔开  
+    pageEncoding:Jsp 文件的数据编码格式  
+    session:设置转译的servlet中是否开启session支持，默认开启，false关闭
+    errorPage:设置jsp 运行错误的跳转页面。  编译通过，执行错误。（exp: 5/0）
+        &lt;%@page errorPage=&quot;error.jsp&quot;%&gt;
+    extends:设置jsp转译的java 文件要继承的父类（包名+类名   x.x.x.classname）
+作用：配置jsp 文件的转译相关参数。</code></pre><h2 id="Jsp-局部代码块-lt-java-code-gt"><a href="#Jsp-局部代码块-lt-java-code-gt" class="headerlink" title="Jsp 局部代码块 &lt;% java code %&gt;"></a>Jsp 局部代码块 &lt;% java code %&gt;</h2><pre><code>特点：
+    局部代码块声明中Java代码会被原样转译到jsp对应的servlet文件的_JspServlet方法中,代码块中神明的变量都是局部变量。  
+    形如： &lt;% if(A&gt;3){%&gt;  &lt;h1&gt;以write输出&lt;/h1&gt; &lt;% } %&gt;  
+缺点：
+    使用局部代码块在jsp进行逻辑判断，麻烦，阅读性差。
+
+开发使用：
+    servlet 逻辑处理，jsp 页面展现  </code></pre><h2 id="Jsp-全局代码块-lt-java-code-gt"><a href="#Jsp-全局代码块-lt-java-code-gt" class="headerlink" title="Jsp 全局代码块 &lt;%! java code %&gt;"></a>Jsp 全局代码块 &lt;%! java code %&gt;</h2><pre><code>特点：
+    声明的Java代码作为全局代码转译到对应的servlet类中。
+使用：
+    &lt;%! 全局代码%&gt;
+注意：
+    全局代码块声明的代码，需要使用局部代码块调用。</code></pre><h2 id="Jsp-脚本段语句"><a href="#Jsp-脚本段语句" class="headerlink" title="Jsp 脚本段语句"></a>Jsp 脚本段语句</h2><pre><code>特点：
+    帮助我们快速的  获取变量  或者  方法的返回值  作为数据响应给浏览器。
+使用：
+    &lt;%= 变量名/方法名() %&gt;
+注意：  
+    不要在方法名或者变量名后面使用 分号 &quot;;&quot;。  
+    因为(脚本段语句和局部代码块的转换)   &lt;%=  test() %&gt;     &lt;==&gt;   &lt;% out.print(test()); %&gt;
+位置：
+    除了jsp语法要求（page指令里）以外的任意位置。</code></pre><h2 id="Jsp-的-静态引入-和-动态引入"><a href="#Jsp-的-静态引入-和-动态引入" class="headerlink" title="Jsp 的 静态引入 和 动态引入"></a>Jsp 的 静态引入 和 动态引入</h2><h3 id="静态引入（合并）"><a href="#静态引入（合并）" class="headerlink" title="静态引入（合并）"></a>静态引入（合并）</h3><pre><code>使用：
+    &lt;%@include file=&quot;引入的jsp文件的相对路径&quot; %&gt;
+特点：
+    会将引入的jsp 文件和当前jsp文件转译为一个java文件使用，在网页中显示合并后的效果。
+注意：
+    1. 静态引入的jsp文件不会单独转译成java(servlet)文件。但是如果直接访问引入的文件，就是走正常流程，会被转译。
+    2. 当前文件和静态引入的jsp文件中不能使用java代码块声明的同名变量（同名变量：名字相同就是指向同一个地址空间，和类型无关，类型只是说明空间里存的数据类型。）。</code></pre><h3 id="动态引入（调用）"><a href="#动态引入（调用）" class="headerlink" title="动态引入（调用）"></a>动态引入（调用）</h3><pre><code>使用：
+    &lt;jsp:include page=&quot;引入的jsp文件的相对路径&quot;&gt;&lt;/jsp:include&gt;
+特点：
+    引入的页面会被转译，然后被调用的页面调用显示。
+注意：
+    动态引入允许文件中声明同名变量。</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><pre><code>降低jsp代码的冗余，便于维护。</code></pre><h2 id="Jsp-转发标签-forward-amp-带值转发"><a href="#Jsp-转发标签-forward-amp-带值转发" class="headerlink" title="Jsp 转发标签 forward &amp; 带值转发"></a>Jsp 转发标签 forward &amp; 带值转发</h2><pre><code>使用：
+    &lt;jsp:forward page=&quot;要转发的jsp文件的相对路径&quot;&gt;&lt;/jsp:forward&gt;
+特点：
+    一次请求
+    地址栏信息不变（内部转发）
+注意：
+    在转发标签的两个标签中间除了写&lt;jsp:param name=&quot;str&quot; value=&quot;aa&quot;/&gt; 子标签不会报错，其他任意字符都会报错。
+    name属性为附带的数据键名
+    value为附带的数据内容
+
+    取值：
+        相当于 请求实体，走  request，get 
+        &lt;%= request.getParameter(&quot;str&quot;)%&gt;
+    注意：
+        会将数据以  ？... 的形式拼接在转发路径后。</code></pre><h2 id="Jsp九大内置对象"><a href="#Jsp九大内置对象" class="headerlink" title="Jsp九大内置对象"></a>Jsp九大内置对象</h2><pre><code>内置对象:
+    jsp文件在转译成其他对应servlet文件的时候自动生成并声明的对象。在jsp文件可直接使用。
+注意：
+    内置对象是声明在_jspservice 方法里最前面，所以只能在局部代码块，或脚本段使用，不能在全局代码块使用。
+内容：
+    PageContext
+        页面上下文对象，封存了其他8个内置对象。封存了当前jsp的运行信息。
+        注意：每个Jsp文件单独拥有一个Pagecontext对象。
+
+    * request 
+        封存当前请求数据的对象。由tomcat服务器创建。一次请求。
+        过程：
+            从请求发送，变成request实例化对象传送到jsp解析成的servlet类中
+
+    * response
+        响应对象。用来响应请求处理结果给浏览器对象。
+        设置响应头，“重定向”。
+    * session
+        用来存储用户的不同请求的共享数据。一次会话。
+    * application
+        就是servletContext 对象，一个项目只有一个。存储用户共享数据的对象，以及完成其他操作。
+        作用域：
+            项目内。
+    out
+        响应对象。jsp内部使用，带有缓冲区的响应对象。效率高于response对象。
+        但不能做response 的重定向。
+    page
+        代表当前jsp对象。就是java中的this.
+    exception
+        异常对象。存储了当前运行的异常信息。
+        注意：
+            使用此对象需要在page指令中使用属性isErrorPage=&quot;true&quot; 开启（并且存在一个一面设置 error=&quot;相对页面&quot;）。
+    config
+        也就是 servletConfig。主要是用来获取web.xml中的配置数据，完成一些初始化数据的读写。</code></pre><h2 id="四个作用域对象"><a href="#四个作用域对象" class="headerlink" title="四个作用域对象"></a>四个作用域对象</h2><pre><code>pageContext     当前页面    （作用域太小）    
+                解决在当前页面内的数据共享问题。
+                获取其他内置对象。
+
+request            一次请求        
+                解决一次请求的servlet的数据共享问题。        
+                通过请求转发，将数据流转给下一个servlet。
+
+session            一次会话        
+                解决一个用户的不同请求的数据共享问题。
+                将数据从一次请求流转给其他请求。
+
+application        项目内            
+                解决不同用户的数据共享问题。
+                将数据从一个用户流转给其他用户。
+
+作用：
+    数据流转。</code></pre><h2 id="Jsp-的路径"><a href="#Jsp-的路径" class="headerlink" title="Jsp 的路径"></a>Jsp 的路径</h2><pre><code>在 jsp 中资源路径可以使用相对路径完成跳转。但是，
+    问题1：资源位置不可随意更改。
+    问题2：需要使用  ../ 进行文件夹的跳出。使用比较麻烦。
+使用绝对路径：
+    /虚拟项目名/项目资源路径
+注意：
+    在jsp 中资源第一个 / 表示的是服务器的根目录，相当于：localhost:8080
+使用jsp中自带的全局路径声明：
+    &lt;%
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+&quot;://&quot;+request.getServerName()+&quot;/&quot;+request.getServerPort()+&quot;/&quot;+path;
+    %&gt;
+            &lt;base href=&quot;&lt;%= basePath %&gt;&gt;&quot;&gt;
+    作用：
+        给资源前面添加虚拟项目路径。</code></pre><h1 id="JSP-教学版"><a href="#JSP-教学版" class="headerlink" title="JSP (教学版)"></a>JSP (教学版)</h1><p>脚本元素<br>    &lt;% %&gt;        脚本<br>    &lt;%! %&gt;        声明<br>    &lt;%= %&gt;        表达式<br>指令元素<br>    &lt;%@ 指令名字&gt;<br>    include      静态包含页面<br>    page        编译jsp时页面设置<br>    taglib        引入第三方标签库<br>动作元素<br>    写法：<br>        &lt;jsp: xxx&gt;<br>    property 正常理解：就是一个类的属性<br>             标准理解：必须是有set,get方法的类的类</p>
+<h2 id="Jsp-中三种注释-1"><a href="#Jsp-中三种注释-1" class="headerlink" title="Jsp 中三种注释"></a>Jsp 中三种注释</h2><pre><code>前端语言注释
+    会被转译（jsp--&gt;jspservlet），也会被发送，但不会被执行
+Java语言注释
+    会被转译，但不会被servlet执行
+    三大注释：
+        单行注释：//
+        多行注释：/* ...*/
+        文档注释：/** ...*/
+Jsp注释
+    不会被转译。
+        &lt;%--注释--%&gt;
+    注意：用html注释&lt;!-- --&gt; 注jsp 代码，jsp仍会被转译，html注释会被以字符串输出。（也就是说，jsp code 只能被java jsp 注释方法注释）</code></pre><h2 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h2><p>之前： &lt;%= %&gt;<br>el：</p>
+<p>从范围；<br>从对象：</p>
+<p>语法解析：<br>    ${obj.prop}   &lt;–  obj.getProp()</p>
+<pre><code>针对key name ..
+${obj[&quot;a.b.c&quot;]}</code></pre><hr>
+<h1 id="零碎知识点"><a href="#零碎知识点" class="headerlink" title="零碎知识点"></a>零碎知识点</h1><h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>存储 key – value   键值对， value 可以是 obj , 每一条K-V 就是一个entry 对象，entry.key  ; entry.value.</p>
+<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p>servlet service dao<br>控制器 – 业务逻辑 – 数据访问</p>
+<h2 id="接口和接口实现（-java-接口-对象-new-实现类-与-实现类-对象-new-实现类）"><a href="#接口和接口实现（-java-接口-对象-new-实现类-与-实现类-对象-new-实现类）" class="headerlink" title="接口和接口实现（    java 接口 对象 = new 实现类 与 实现类 对象= new 实现类）"></a>接口和接口实现（    java 接口 对象 = new 实现类 与 实现类 对象= new 实现类）</h2><h3 id="解释一"><a href="#解释一" class="headerlink" title="解释一"></a>解释一</h3><pre><code>MyInterface  mi = new MyClass();
+涉及的向上转型，向上转型后，mi只可以调用MyInterface的方法（这里包括MyClass重写的方法和MyInterface未被重写的方法）；
+若是想调用MyClass新建的方法，有两种实现：
+1.MyClass mc= new MyClass(); 
+mc.newMethoud();
+2.MyInterface  mi = new MyClass();//先向上转型
+MyClass myClass = (MyClass)mi;//在向下转型
+myClass.newMethod();
+向下转型在这里看起来像是多余的，但在Java的泛型编程里边用处很大；</code></pre><h3 id="解释二"><a href="#解释二" class="headerlink" title="解释二"></a>解释二</h3><p>问题是：接口 对象 = new 实现类 与 实现类 对象= new 实现类？？？</p>
+<p>Java 中到底是应该用接口类型 还是实现类的类类型去引用对象？</p>
+<p>//implA 为接口 ClassA为其实现类<br>implA a=new ClassA();//接口类型的引用变量A 去接收对象地址<br>or<br>ClassA a=new ClassA();//类类型的引用变量A 去接收对象地址  </p>
+<p>我们假设有一个接口A ，和它得实现类B，简化代码如下：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">InterA</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">request</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImplA</span> <span class="keyword">implements</span> <span class="title">InterA</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">request</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"接口中的方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">specile</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"实现类中特殊的方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br><span class="line">测试类：</span><br><span class="line"></span><br><span class="line">复制代码</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 接口类型的引用变量A 去接收对象地址，只能调用接口中的方法</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        InterA a= <span class="keyword">new</span> ImplA();</span><br><span class="line">        a.request();</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 类类型的引用变量A 去接收对象地址，可以调用很多方法</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        ImplA b = <span class="keyword">new</span> ImplA();</span><br><span class="line">        b.request();</span><br><span class="line">        b.specile();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>InterA a= new ImplA();</code></p>
+<p>用接口类型的引用变量demo，去接收实现类B实例化出来的对象地址(这里的=是传递的地址)。为什么不是 ImplA b = new ImplA();呢，这样也不会有问题啊？（当然InterA a= new InterA();是不可能的，因为接口是不能用来实例化对象的，但可以用来声明一个接口类型的引用变量）。</p>
+<p>ref:<br><a href="https://www.cnblogs.com/xiaoheliu1024/p/10918017.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaoheliu1024/p/10918017.html</a></p>
+<hr>
+<h1 id="Pits"><a href="#Pits" class="headerlink" title="Pits"></a>Pits</h1><h2 id="Invalid-admin-jsp-in-filter-mapping"><a href="#Invalid-admin-jsp-in-filter-mapping" class="headerlink" title="Invalid /admin/*.jsp in filter mapping"></a>Invalid /admin/*.jsp in filter mapping</h2><p>url-pattern详解  </p>
+<p>在web.xml文件中，以下语法用于定义映射：  </p>
+<ol>
+<li><p>以”/’开头和以”/*”结尾的是用来做路径映射的。  </p>
+</li>
+<li><p>以前缀”*.”开头的是用来做扩展映射的。  </p>
+</li>
+<li><p>“/” 是用来定义default servlet映射的。  </p>
+</li>
+<li><p>剩下的都是用来定义详细映射的。比如： /aa/bb/cc.action  </p>
+</li>
+</ol>
+<p>所以，为什么定义”/admin/*.jsp”这样一个看起来很正常的匹配会错？因为这个匹配即属于路径映射，也属于扩展映射，导致容器无法判断。</p>
+<p>ref:<br><a href="https://blog.csdn.net/testcs_dn/article/details/73848846" target="_blank" rel="noopener">https://blog.csdn.net/testcs_dn/article/details/73848846</a></p>
+<h2 id="servletPath-contextPath"><a href="#servletPath-contextPath" class="headerlink" title="servletPath  contextPath"></a>servletPath  contextPath</h2><p>getContextPath  项目名<br>getServletPath    servlet名</p>
+<h2 id="导入工程报错"><a href="#导入工程报错" class="headerlink" title="导入工程报错"></a><strong><em>导入工程报错</em></strong></h2><p>The type java.lang.Object cannot be resolved. It is indirectly referenced from required .class files</p>
+<p>当你在Eclipse引用不同版本JDK工程时会发生该问题。由于你开发环境中应用了多个版本的JDK 或JRE导致的。Eclipse会按照最初的开发环境默认选择对应的Jre。如Eclipse上有jdk1.4开发的环境工程，当你在引入高版本jdk1.6开发的工程时，以上问题就出现了。</p>
+<p>问题解决的方案如下：</p>
+<p>进入window\preferences\java\Installed JREs<br>按Add –&gt; Browse…—&gt;选择jre安装路劲（我的jre路径是D:\Program Files\Java\jre1.6.0_02）—&gt;OK<br>找到你的工程右键点击Properties选项 出现对话框后 选择右边的Libraries选项卡 —&gt; 单击Add 了Library…—&gt;</p>
+<p>选择Jre System Library… —&gt; Next—&gt;选择Alternate Jre 下的对应版本jre –&gt; Finish —&gt; Ok</p>
+<p>以上问题就可解决。  </p>
+<h2 id="sql-语句要注意，否者会抛此异常"><a href="#sql-语句要注意，否者会抛此异常" class="headerlink" title="sql 语句要注意，否者会抛此异常"></a>sql 语句要注意，否者会抛此异常</h2><p>java.sql.SQLException: com.microsoft.sqlserver.jdbc.SQLServerException: 关键字 ‘WHERE’ 附近有语法错误。 Query: insert into dbo.mihuan(shopId,shopName,outerId,price,inventoryNum) values(?,?,?,?,?) Parameters: [1, 1, 1, 1.0, 1]</p>
+<p><strong><em>在左括号前 要有空格。</em></strong></p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">Related Posts</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\01\08\JSP\" rel="bookmark">JSP</a></div>
+    </li>
+  </ul>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/JSP/" rel="tag"><i class="fa fa-tag"></i> JSP</a>
+              <a href="/tags/JavaWeb/" rel="tag"><i class="fa fa-tag"></i> JavaWeb</a>
+              <a href="/tags/Servlet/" rel="tag"><i class="fa fa-tag"></i> Servlet</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/11/JavaConnectToSQLServer/" rel="prev" title="JDBC连接SQLserver">
+      <i class="fa fa-chevron-left"></i> JDBC连接SQLserver
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/18/ComputerNetwork/" rel="next" title="计算机网络知识">
+      计算机网络知识 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#补习"><span class="nav-number">1.</span> <span class="nav-text">补习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Problems"><span class="nav-number">2.</span> <span class="nav-text">Problems</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础复习"><span class="nav-number">3.</span> <span class="nav-text">基础复习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造器-constructor"><span class="nav-number">3.1.</span> <span class="nav-text">构造器 constructor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java中类名，方法，变量，包名等大小写命名规范"><span class="nav-number">3.2.</span> <span class="nav-text">java中类名，方法，变量，包名等大小写命名规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tomcat-目录结构"><span class="nav-number">3.3.</span> <span class="nav-text">tomcat 目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#servlet"><span class="nav-number">3.4.</span> <span class="nav-text">servlet</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#servlet-1"><span class="nav-number">4.</span> <span class="nav-text">servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#是什么"><span class="nav-number">4.1.</span> <span class="nav-text">是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么"><span class="nav-number">4.2.</span> <span class="nav-text">为什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么使用"><span class="nav-number">4.3.</span> <span class="nav-text">怎么使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http-请求"><span class="nav-number">4.4.</span> <span class="nav-text">http 请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get-post-请求的发送方式"><span class="nav-number">4.4.1.</span> <span class="nav-text">get post 请求的发送方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#servlet生命周期"><span class="nav-number">4.5.</span> <span class="nav-text">servlet生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet接口中的方法"><span class="nav-number">4.6.</span> <span class="nav-text">Servlet接口中的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ServletConfig接口中的方法-共有四个方法"><span class="nav-number">4.7.</span> <span class="nav-text">ServletConfig接口中的方法(共有四个方法)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数传递"><span class="nav-number">4.8.</span> <span class="nav-text">参数传递</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-在servlet中-接受客户端传的参数"><span class="nav-number">4.8.1.</span> <span class="nav-text">8.在servlet中,接受客户端传的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-接收单一的值-一个参数名对应一个值"><span class="nav-number">4.8.2.</span> <span class="nav-text">8.1 接收单一的值(一个参数名对应一个值)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-一个参数名对应多个值-比如多选框"><span class="nav-number">4.8.3.</span> <span class="nav-text">8.2 一个参数名对应多个值(比如多选框)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-获得本次传参中的所有参数名"><span class="nav-number">4.8.4.</span> <span class="nav-text">8.3 获得本次传参中的所有参数名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-获得本次传参中的所有参数及对应的值"><span class="nav-number">4.8.5.</span> <span class="nav-text">8.4 获得本次传参中的所有参数及对应的值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文乱码"><span class="nav-number">4.9.</span> <span class="nav-text">中文乱码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-客户端传参过程中-出现中文乱码"><span class="nav-number">4.9.1.</span> <span class="nav-text">9.客户端传参过程中,出现中文乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-get方式传参-中文乱码"><span class="nav-number">4.9.2.</span> <span class="nav-text">9.1 get方式传参,中文乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-post方式传参-中文乱码"><span class="nav-number">4.9.3.</span> <span class="nav-text">9.2 post方式传参,中文乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3-servlet中使用io流写数据到浏览器-浏览器里面-显示中文乱码"><span class="nav-number">4.9.4.</span> <span class="nav-text">9.3 servlet中使用io流写数据到浏览器,浏览器里面  显示中文乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-4-Unicode-字符集-和UTF-8-编码规则"><span class="nav-number">4.9.5.</span> <span class="nav-text">9.4    Unicode(字符集)和UTF-8(编码规则)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳转（内部跳转）和重定向（外部跳转）"><span class="nav-number">4.10.</span> <span class="nav-text">跳转（内部跳转）和重定向（外部跳转）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-servlet中的跳转和重定向"><span class="nav-number">4.10.1.</span> <span class="nav-text">10.servlet中的跳转和重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-服务器内部跳转"><span class="nav-number">4.10.2.</span> <span class="nav-text">10.1 服务器内部跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-客户端重定向"><span class="nav-number">4.10.3.</span> <span class="nav-text">10.2 客户端重定向</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web项目中的路径"><span class="nav-number">4.11.</span> <span class="nav-text">web项目中的路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-web项目中的路径"><span class="nav-number">4.11.1.</span> <span class="nav-text">1.web项目中的路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-路径中最左边的"><span class="nav-number">4.11.2.</span> <span class="nav-text">1.1 路径中最左边的&#x2F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-HttpServletRequest中和路径相关的方法"><span class="nav-number">4.11.3.</span> <span class="nav-text">1.2 HttpServletRequest中和路径相关的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-ServletContext中和路径相关的方法"><span class="nav-number">4.11.4.</span> <span class="nav-text">1.3 ServletContext中和路径相关的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-相对路径和绝对路径"><span class="nav-number">4.11.5.</span> <span class="nav-text">1.4 相对路径和绝对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结：内外部跳转-amp-相对、绝对路径"><span class="nav-number">4.11.6.</span> <span class="nav-text">总结：内外部跳转 &amp; 相对、绝对路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request-session-application"><span class="nav-number">4.12.</span> <span class="nav-text">request session application</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-request-session-application"><span class="nav-number">4.12.1.</span> <span class="nav-text">2.request session application</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-这三种对象可以在服务器内部帮我们保存数据以及传递数据"><span class="nav-number">4.12.2.</span> <span class="nav-text">2.1 这三种对象可以在服务器内部帮我们保存数据以及传递数据.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-doGet或者doPost中怎么拿到这三种对象"><span class="nav-number">4.12.3.</span> <span class="nav-text">2.2 doGet或者doPost中怎么拿到这三种对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-这三种对象的生命周期及作用范围"><span class="nav-number">4.12.4.</span> <span class="nav-text">2.3    这三种对象的生命周期及作用范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-使用这三种对象存-取数据"><span class="nav-number">4.12.5.</span> <span class="nav-text">2.4    使用这三种对象存&#x2F;取数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#会话追踪技术-cookie"><span class="nav-number">4.13.</span> <span class="nav-text">会话追踪技术:cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-会话追踪技术-cookie"><span class="nav-number">4.13.1.</span> <span class="nav-text">3.会话追踪技术:cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-http协议的访问是无状态的访问"><span class="nav-number">4.13.2.</span> <span class="nav-text">3.1 http协议的访问是无状态的访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-有些时候需要记录之前的访问状态"><span class="nav-number">4.13.3.</span> <span class="nav-text">3.2 有些时候需要记录之前的访问状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-session和cookie的位置"><span class="nav-number">4.13.4.</span> <span class="nav-text">3.3 session和cookie的位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-session和cookie的作用"><span class="nav-number">4.13.5.</span> <span class="nav-text">3.4 session和cookie的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-session和cookie之间的关系"><span class="nav-number">4.13.6.</span> <span class="nav-text">3.5 session和cookie之间的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-服务器端向浏览器写回cookie"><span class="nav-number">4.13.7.</span> <span class="nav-text">3.6 服务器端向浏览器写回cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-servlet中拿到从浏览器发送过来的cookie文件中的数据"><span class="nav-number">4.13.8.</span> <span class="nav-text">3.7 servlet中拿到从浏览器发送过来的cookie文件中的数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL重写-也属于会话追踪技术的一种"><span class="nav-number">4.14.</span> <span class="nav-text">URL重写 (也属于会话追踪技术的一种)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-URL重写-也属于会话追踪技术的一种"><span class="nav-number">4.14.1.</span> <span class="nav-text">4.URL重写 (也属于会话追踪技术的一种)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-URL重写的作用"><span class="nav-number">4.14.2.</span> <span class="nav-text">4.1 URL重写的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-JSESSIONID从客户端传给服务器的方式"><span class="nav-number">4.14.3.</span> <span class="nav-text">4.2 JSESSIONID从客户端传给服务器的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-URL重写的实现"><span class="nav-number">4.14.4.</span> <span class="nav-text">4.3 URL重写的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决乱码问题"><span class="nav-number">4.15.</span> <span class="nav-text">解决乱码问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于跳转问题"><span class="nav-number">4.16.</span> <span class="nav-text">关于跳转问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭浏览器"><span class="nav-number">4.17.</span> <span class="nav-text">关闭浏览器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#servlet-里main-方法"><span class="nav-number">4.18.</span> <span class="nav-text">servlet 里main 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pojo-–-gt-JavaBean"><span class="nav-number">4.19.</span> <span class="nav-text">pojo –&gt; JavaBean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session-补充"><span class="nav-number">4.20.</span> <span class="nav-text">session 补充</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP-自学版"><span class="nav-number">5.</span> <span class="nav-text">JSP(自学版)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp-中三种注释"><span class="nav-number">5.1.</span> <span class="nav-text">Jsp 中三种注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp-page指令"><span class="nav-number">5.2.</span> <span class="nav-text">Jsp page指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp-局部代码块-lt-java-code-gt"><span class="nav-number">5.3.</span> <span class="nav-text">Jsp 局部代码块 &lt;% java code %&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp-全局代码块-lt-java-code-gt"><span class="nav-number">5.4.</span> <span class="nav-text">Jsp 全局代码块 &lt;%! java code %&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp-脚本段语句"><span class="nav-number">5.5.</span> <span class="nav-text">Jsp 脚本段语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp-的-静态引入-和-动态引入"><span class="nav-number">5.6.</span> <span class="nav-text">Jsp 的 静态引入 和 动态引入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态引入（合并）"><span class="nav-number">5.6.1.</span> <span class="nav-text">静态引入（合并）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态引入（调用）"><span class="nav-number">5.6.2.</span> <span class="nav-text">动态引入（调用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.6.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp-转发标签-forward-amp-带值转发"><span class="nav-number">5.7.</span> <span class="nav-text">Jsp 转发标签 forward &amp; 带值转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp九大内置对象"><span class="nav-number">5.8.</span> <span class="nav-text">Jsp九大内置对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四个作用域对象"><span class="nav-number">5.9.</span> <span class="nav-text">四个作用域对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp-的路径"><span class="nav-number">5.10.</span> <span class="nav-text">Jsp 的路径</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP-教学版"><span class="nav-number">6.</span> <span class="nav-text">JSP (教学版)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp-中三种注释-1"><span class="nav-number">6.1.</span> <span class="nav-text">Jsp 中三种注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EL表达式"><span class="nav-number">6.2.</span> <span class="nav-text">EL表达式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#零碎知识点"><span class="nav-number">7.</span> <span class="nav-text">零碎知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#map"><span class="nav-number">7.1.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC"><span class="nav-number">7.2.</span> <span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口和接口实现（-java-接口-对象-new-实现类-与-实现类-对象-new-实现类）"><span class="nav-number">7.3.</span> <span class="nav-text">接口和接口实现（    java 接口 对象 &#x3D; new 实现类 与 实现类 对象&#x3D; new 实现类）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解释一"><span class="nav-number">7.3.1.</span> <span class="nav-text">解释一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释二"><span class="nav-number">7.3.2.</span> <span class="nav-text">解释二</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pits"><span class="nav-number">8.</span> <span class="nav-text">Pits</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Invalid-admin-jsp-in-filter-mapping"><span class="nav-number">8.1.</span> <span class="nav-text">Invalid &#x2F;admin&#x2F;*.jsp in filter mapping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#servletPath-contextPath"><span class="nav-number">8.2.</span> <span class="nav-text">servletPath  contextPath</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入工程报错"><span class="nav-number">8.3.</span> <span class="nav-text">导入工程报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sql-语句要注意，否者会抛此异常"><span class="nav-number">8.4.</span> <span class="nav-text">sql 语句要注意，否者会抛此异常</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HnnH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">HnnH</p>
+  <div class="site-description" itemprop="description">That which does not kill us makes us stronger</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:bellamy_n_h_chief@163.com" title="E-Mail → mailto:bellamy_n_h_chief@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://aofnh.github.io/" title="https:&#x2F;&#x2F;aofnh.github.io&#x2F;" rel="noopener" target="_blank">MyBlog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HnnH</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script size="200" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three.min.js"></script>
+    <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes : 0,
+          toolbar  : 0,
+          statusbar: 0,
+          pagemode : 'thumbs',
+          view     : 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Git  Guide">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git  Docs">
+<meta property="og:url" content="http://yoursite.com/2019/10/05/Git-Guide/index.html">
+<meta property="og:site_name" content="HnnH">
+<meta property="og:description" content="Git  Guide">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-10-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-02-11T16:00:00.000Z">
+<meta property="article:author" content="HnnH">
+<meta property="article:tag" content="Docs">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content=".gitignore">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2019/10/05/Git-Guide/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Git  Docs | HnnH</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HnnH</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">36</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">21</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/categories/Docs/" rel="section"><i class="fa fa-fw fa-file"></i>Docs</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-lab">
+
+    <a href="/lab/" rel="section"><i class="fa fa-fw fa-flask"></i>Lab</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/05/Git-Guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="HnnH">
+      <meta itemprop="description" content="That which does not kill us makes us stronger">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HnnH">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Git  Docs
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-10-05 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-05T00:00:00+08:00">2019-10-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-12 00:00:00" itemprop="dateModified" datetime="2020-02-12T00:00:00+08:00">2020-02-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docs/" itemprop="url" rel="index">
+                    <span itemprop="name">Docs</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docs/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Git  Guide</p>
+<a id="more"></a>
+
+<hr>
+<h1 id="Git-Guide"><a href="#Git-Guide" class="headerlink" title="Git  Guide"></a><strong><em>Git  Guide</em></strong></h1><div class="note default">
+            <h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><h3 id="官方Documentation"><a href="#官方Documentation" class="headerlink" title="官方Documentation"></a>官方Documentation</h3><p><a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener">https://git-scm.com/book/en/v2</a>  </p><h3 id="Git详细操作"><a href="#Git详细操作" class="headerlink" title="Git详细操作"></a>Git详细操作</h3><p><a href="https://www.jianshu.com/p/fb61299086b6" target="_blank" rel="noopener">https://www.jianshu.com/p/fb61299086b6</a>  </p><h3 id="Git-安装和使用教程-转载"><a href="#Git-安装和使用教程-转载" class="headerlink" title="Git 安装和使用教程(转载)"></a>Git 安装和使用教程(转载)</h3><p><a href="https://www.cnblogs.com/chechen/p/9091167.html" target="_blank" rel="noopener">https://www.cnblogs.com/chechen/p/9091167.html</a>  </p>
+          </div>
+
+<hr>
+<h2 id="Git-基本工作流程"><a href="#Git-基本工作流程" class="headerlink" title="Git 基本工作流程"></a><strong><em>Git 基本工作流程</em></strong></h2><h3 id="本地工作流程（灵魂所在）"><a href="#本地工作流程（灵魂所在）" class="headerlink" title="本地工作流程（灵魂所在）"></a>本地工作流程（灵魂所在）</h3><h4 id="Git-有三种状态"><a href="#Git-有三种状态" class="headerlink" title="Git 有三种状态"></a>Git 有三种状态</h4><p>你的文件可能处于其中之一：已提交（committed）、已修改（modified）和已暂存（staged）。 已提交表示数据已经安全的保存在本地数据库中。 已修改表示修改了文件，但还没保存到数据库中。 已暂存表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。</p>
+<p>由此引入 Git 项目的三个工作区域的概念：Git 仓库、工作目录以及暂存区域。</p>
+<h4 id="工作区与暂存区的区别"><a href="#工作区与暂存区的区别" class="headerlink" title="工作区与暂存区的区别"></a>工作区与暂存区的区别</h4><p>工作区：就是你在电脑上看到的目录，比如目录下GitDemo里的文件(.git隐藏目录版本库除外)。或者以后需要再新建的目录文件等等都属于工作区范畴。</p>
+<p>版本库(Repository)：工作区有一个<code>隐藏目录.git</code>,这个不属于工作区，这是版本库。其中版本库里面存了很多东西，其中最重要的就是<code>stage(暂存区)</code>，还有Git为我们自动创建了第一个分支master,以及指向master的一个指针HEAD。</p>
+<h4 id="Git-的基本工作流程"><a href="#Git-的基本工作流程" class="headerlink" title="Git 的基本工作流程"></a>Git 的基本工作流程</h4><p>在工作目录中修改文件。  </p>
+<p>暂存文件，将文件的快照放入暂存区域。  </p>
+<p>提交更新，找到暂存区域的文件，将快照永久性存储到 Git 仓库目录。  </p>
+<blockquote>
+<p>如果 Git 目录中保存着特定版本的文件，就属于<code>已提交状态</code>。 如果作了修改并已放入暂存区域，就属于<code>已暂存状态</code>。 如果自上次取出  后，作了修改但还没有放到暂存区域，就是<code>已修改状态</code>。  </p>
+</blockquote>
+<p>Git提交文件到版本库有两步：</p>
+<ul>
+<li><p>第一步：是使用 <code>git add</code>把文件添加进去，实际上就是把文件添加到暂存区。</p>
+</li>
+<li><p>第二步：使用<code>git commit  -m ...</code>提交更改，实际上就是把暂存区的所有内容提交到当前分支上。  </p>
+</li>
+</ul>
+<h3 id="远程工作流程"><a href="#远程工作流程" class="headerlink" title="远程工作流程"></a><strong><em>远程工作流程</em></strong></h3><h4 id="通过-git-提交-代码-到-Github"><a href="#通过-git-提交-代码-到-Github" class="headerlink" title="通过 git 提交 代码 到 Github"></a>通过 git 提交 代码 到 Github</h4><ol>
+<li><p>git中提交代码到本地仓库</p>
+<p> 首先添加代码到本地暂存区  </p>
+<p> 之后再将暂存区的代码提交到HEAD，它保存你最后一次提交的结果  </p>
+</li>
+<li><p>从本地仓库提交到github远程仓库  </p>
+</li>
+</ol>
+<p>Ref:<br><a href="https://blog.csdn.net/baidu_26759899/article/details/62216992" target="_blank" rel="noopener">https://blog.csdn.net/baidu_26759899/article/details/62216992</a></p>
+<hr>
+<h2 id="Some-words"><a href="#Some-words" class="headerlink" title="Some words"></a><strong><em>Some words</em></strong></h2><table>
+<thead>
+<tr>
+<th>en</th>
+<th>zh</th>
+<th>mean</th>
+<th>url</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rebase</td>
+<td>变基</td>
+<td></td>
+<td><a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA</a></td>
+</tr>
+<tr>
+<td>pull</td>
+<td>拉取</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fetch</td>
+<td>获取</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="命令使用"><a href="#命令使用" class="headerlink" title="命令使用"></a><strong><em>命令使用</em></strong></h2><h3 id="添加新的远程仓库【url】（不是创建）"><a href="#添加新的远程仓库【url】（不是创建）" class="headerlink" title="添加新的远程仓库【url】（不是创建）"></a><strong><em>添加新的远程仓库【url】（不是创建）</em></strong></h3><p>要添加一个新的远程仓库,可以指定一个简单的名字,以便将来引用,运行 git remote add [shortname] [url]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;列出已经存在的远程分支</span><br><span class="line">$ git remote</span><br><span class="line"></span><br><span class="line">　　origin</span><br><span class="line"></span><br><span class="line">$ git remote add pb git:&#x2F;&#x2F;github.com&#x2F;paulboone&#x2F;ticgit.git</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;-v | --verbose 列出详细信息，在每一个名字后面列出其远程url</span><br><span class="line">$ git remote -v</span><br><span class="line"></span><br><span class="line">　　origin git:&#x2F;&#x2F;github.com&#x2F;schacon&#x2F;ticgit.git</span><br><span class="line"></span><br><span class="line">　　pb git:&#x2F;&#x2F;github.com&#x2F;paulboone&#x2F;ticgit.git</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;查看详细信息</span><br><span class="line">$ git remote show origin</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;现在可以用字串 pb 指代对应的仓库地址了.比如说,要抓取所有 Paul 有的,但本地仓库没有的信息,可以运行 git fetch pb:</span><br><span class="line">$ git fetch pb</span><br></pre></td></tr></table></figure>
+
+<h3 id="在本地创建-Git-仓库，并推送"><a href="#在本地创建-Git-仓库，并推送" class="headerlink" title="在本地创建 Git 仓库，并推送"></a><strong><em>在本地创建 Git 仓库，并推送</em></strong></h3><figure class="highlight c"><figcaption><span>git</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta"># git remote add 应添加您对应的仓库地址，可为 HTTPS 或 SSH</span></span><br><span class="line"><span class="built_in">mkdir</span> git-osc  </span><br><span class="line">cd git-osc  </span><br><span class="line"></span><br><span class="line">git init  </span><br><span class="line">touch README.md  </span><br><span class="line"></span><br><span class="line">git add  README.md  </span><br><span class="line"></span><br><span class="line">git commit -m 'first commit'</span><br><span class="line"></span><br><span class="line">git remote add origin https:<span class="comment">//gitee.com/oschina/git-osc.git  </span></span><br><span class="line"></span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#如果您在本地已经有需要上传到 码云 的项目，那么您需要执行如下命令：</span><br><span class="line"></span><br><span class="line">cd existing_git_repo</span><br><span class="line"></span><br><span class="line">git remote add origin https:<span class="comment">//gitee.com/oschina/git-osc.git</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//加了参数-u后，以后即可直接用git push 代替git push origin master</span></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Git推送到多仓库"><a href="#Git推送到多仓库" class="headerlink" title="Git推送到多仓库"></a><strong><em>Git推送到多仓库</em></strong></h3><p>添加了 URL 之后，Git 默认的 Pull/Fetch 操作仍然是从 origin 里配置的 Github 地址进行， 而 Push 操作则可以只需要执行一个 git push 命令，一次性把仓库推送到 Github 和 Bitbucket 两个仓库去。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 然后分别设定push URL</span><br><span class="line">git remote set-url --add --push origin https:&#x2F;&#x2F;bitbucket.org&#x2F;user&#x2F;project.git</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://www.gnailuy.com/linux/2019/02/25/git-push-to-multiple-repositories/" target="_blank" rel="noopener">http://www.gnailuy.com/linux/2019/02/25/git-push-to-multiple-repositories/</a>  </p>
+<p>三种方法  </p>
+<ol>
+<li>添加多个（不同名）远程仓库  </li>
+<li>添加同名多个远程仓库  </li>
+<li>直接修改.git/config 文件</li>
+</ol>
+<p><a href="https://www.boris1993.com/tools/git/push-to-multi-git-repo.html" target="_blank" rel="noopener">https://www.boris1993.com/tools/git/push-to-multi-git-repo.html</a></p>
+<h3 id="创建和合并分支-以及原理"><a href="#创建和合并分支-以及原理" class="headerlink" title="创建和合并分支(以及原理))"></a><strong><em>创建和合并分支(以及原理))</em></strong></h3><p><code>改变 指针 指向</code><br>因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务.</p>
+<figure class="highlight c"><figcaption><span>git</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个叫 dev 的分支，并切换到该分支</span></span><br><span class="line">git checkout -b dev</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line">git branch dev</span><br><span class="line">git checkout dev</span><br><span class="line"></span><br><span class="line"><span class="comment">//查看分支详情，包括当前所处分支</span></span><br><span class="line">git branch</span><br><span class="line"><span class="comment">//查看远程分支</span></span><br><span class="line">git branch -r</span><br><span class="line"><span class="comment">//查看本地和远程所有分支</span></span><br><span class="line">git branch -a</span><br><span class="line"></span><br><span class="line"><span class="comment">//在新分支做一些修改</span></span><br><span class="line">...（readme.txt）</span><br><span class="line"></span><br><span class="line"><span class="comment">//提交修改</span></span><br><span class="line"><span class="comment">//将修改添加到暂存区</span></span><br><span class="line">git add readme.txt</span><br><span class="line"><span class="comment">//查看状态</span></span><br><span class="line">git status</span><br><span class="line"><span class="comment">//将暂存区文件提交到当前分支仓库，并添加描述说明</span></span><br><span class="line">git commit -m <span class="string">"description"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//合并修改</span></span><br><span class="line"><span class="comment">//切换到master分支</span></span><br><span class="line">git checkout master</span><br><span class="line"><span class="comment">//把dev分支的工作成果合并到master分支</span></span><br><span class="line">git merge dev</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除dev分支</span></span><br><span class="line">git branch -d dev</span><br><span class="line"><span class="comment">//查看分支</span></span><br><span class="line">git branch -a</span><br><span class="line"></span><br><span class="line"><span class="comment">//推送到远程仓库</span></span><br><span class="line"><span class="comment">//添加远程仓库地址， 并命名为origin</span></span><br><span class="line">git remote add origin https:<span class="comment">//gitee.com/oschina/git-osc.git</span></span><br><span class="line"><span class="comment">//推送到master分支</span></span><br><span class="line">git push origin master</span><br><span class="line"><span class="comment">//or</span></span><br><span class="line"><span class="comment">//加了参数-u后，以后即可直接用git push 代替git push origin master</span></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<p>ref<br><a href="https://www.cnblogs.com/tracylxy/p/6433916.html" target="_blank" rel="noopener">https://www.cnblogs.com/tracylxy/p/6433916.html</a></p>
+<h4 id="分支合并的模式-2种"><a href="#分支合并的模式-2种" class="headerlink" title="分支合并的模式 (2种)"></a>分支合并的模式 (2种)</h4><pre><code>1、快速合并方式  
+`git merge branch-name`
+
+2、普通合并方式  `(会留下合并记录，推荐)`  
+    普通合并实质上是在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。所以需要我们添加commit描述  
+`git merge --no-ff -m &quot;merge with no-fast-forward&quot; dev`</code></pre><hr>
+<h3 id="Git撤销修改和删除文件操作"><a href="#Git撤销修改和删除文件操作" class="headerlink" title="Git撤销修改和删除文件操作"></a>Git撤销修改和删除文件操作</h3><p>第一：如果我知道要删掉那些内容的话，直接手动更改去掉那些需要的文件，然后add添加到暂存区，最后commit掉。</p>
+<p>第二：版本回退。使用 <code>git reset  --hard HEAD^</code>。</p>
+<ol>
+<li><p>git reset  –hard HEAD^ 那么如果要回退到上上个版本只需把HEAD^ 改成 HEAD^^ 以此类推。<br>（回退到前100个版本<code>git reset  --hard HEAD~100</code>）</p>
+</li>
+<li><p>根据版本号回退</p>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取版本号</span></span><br><span class="line">git reflog</span><br><span class="line"><span class="comment">//回退</span></span><br><span class="line">git reset  --hard <span class="number">6f</span>cfc89</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>第三： git checkout –readme.txt 意思就是，把readme.txt文件在工作区做的修改全部撤销，这里有2种情况，如下：</p>
+<pre><code>1.readme.txt自动修改后，还没有放到暂存区，使用 撤销修改就回到和版本库一模一样的状态。
+
+2.另外一种是readme.txt已经放入暂存区了，接着又作了修改，撤销修改就回到添加暂存区后的状态。</code></pre><p>Ref:<br><a href="https://www.cnblogs.com/chechen/p/9091167.html" target="_blank" rel="noopener">https://www.cnblogs.com/chechen/p/9091167.html</a></p>
+<hr>
+<h2 id="Github-http-免密提交"><a href="#Github-http-免密提交" class="headerlink" title="Github  http 免密提交"></a>Github  http 免密提交</h2><div class="note default">
+            <p>url格式<br><a href="https://username:password@github.com/XXXXX.git" target="_blank" rel="noopener">https://username:password@github.com/XXXXX.git</a>  </p><p>Example<br><a href="https://akmumu:123456@github.com/akmumu/google_hosts.git" target="_blank" rel="noopener">https://akmumu:123456@github.com/akmumu/google_hosts.git</a>  </p>
+          </div>  
+
+<hr>
+<h2 id="git-push-命令-深度理解"><a href="#git-push-命令-深度理解" class="headerlink" title="git push 命令 深度理解"></a>git push 命令 深度理解</h2><p><code>git push origin master</code>  </p>
+<p>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;  </p>
+<div class="note primary">
+            <p>分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，所以git pull是&lt;远程分支&gt;:&lt;本地分支&gt;，而git push是&lt;本地分支&gt;:&lt;远程分支&gt;。</p>
+          </div>
+
+<p><strong><em>一个关系： 追踪关系</em></strong>  </p>
+<p>如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。</p>
+<div class="note danger">
+            <h3 id="特例"><a href="#特例" class="headerlink" title="特例"></a>特例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin :master</span><br><span class="line"># 等同于</span><br><span class="line">$ git push origin --delete master</span><br></pre></td></tr></table></figure>
+          </div>
+
+<p>Ref:<br><a href="https://www.cnblogs.com/dyh-air/p/9257237.html" target="_blank" rel="noopener">https://www.cnblogs.com/dyh-air/p/9257237.html</a>  </p>
+<hr>
+<h2 id="Git-拉取-和-获取-pull-和-fetch-区别"><a href="#Git-拉取-和-获取-pull-和-fetch-区别" class="headerlink" title="Git 拉取 和 获取  ( pull 和 fetch 区别 )"></a><strong><em>Git 拉取 和 获取  ( pull 和 fetch 区别 )</em></strong></h2><p>使用git  直接提交的话   直接 push</p>
+<p>获取最新版本  有两种  拉取 和 获取 pull 和 fetch</p>
+<p>git  pull     从远程拉取最新版本 到本地  自动合并 merge  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+
+<p>git  fetch   从远程获取最新版本 到本地   不会自动合并 merge  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch  origin master  </span><br><span class="line">git log  -p master ..&#x2F;origin&#x2F;master  </span><br><span class="line">git merge orgin&#x2F;master</span><br></pre></td></tr></table></figure>
+
+<p>实际使用中  使用git fetch 更安全    在merge之前可以看清楚 更新情况  再决定是否合并</p>
+<hr>
+<h2 id="不同-Git-平台-间-迁库-问题"><a href="#不同-Git-平台-间-迁库-问题" class="headerlink" title="不同 Git 平台 间 迁库 问题"></a><strong><em>不同 Git 平台 间 迁库 问题</em></strong></h2><blockquote>
+<p>前提： 都要先在 导入方 新建一个repo</p>
+</blockquote>
+<h3 id="way-1-import-repo"><a href="#way-1-import-repo" class="headerlink" title="way 1 : import repo"></a>way 1 : import repo</h3><p><a href="https://blog.csdn.net/qq598535550/article/details/87870931" target="_blank" rel="noopener">https://blog.csdn.net/qq598535550/article/details/87870931</a></p>
+<h3 id="way-2-commond-line"><a href="#way-2-commond-line" class="headerlink" title="way 2 : commond line"></a>way 2 : commond line</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># Show existing remotes</span><br><span class="line">$ git remote -v</span><br><span class="line">&gt; origin	git@git-server&#x2F;octocat&#x2F;hello-world.git (fetch)</span><br><span class="line">&gt; origin	git@git-server&#x2F;octocat&#x2F;hello-world.git (push)</span><br><span class="line"></span><br><span class="line"># Remove existing remotes</span><br><span class="line">$ git remote remove origin</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># or</span><br><span class="line"></span><br><span class="line">git clone https:&#x2F;&#x2F;gitee.com&#x2F;liyifeng1994&#x2F;study-xxx.git</span><br><span class="line"></span><br><span class="line">git remote remove origin</span><br><span class="line"></span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;liyifeng1994&#x2F;study-xxx.git</span><br><span class="line"></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="git用新分支替换掉master分支"><a href="#git用新分支替换掉master分支" class="headerlink" title="git用新分支替换掉master分支"></a><strong><em>git用新分支替换掉master分支</em></strong></h2><p><a href="https://blog.csdn.net/xin_jmail/article/details/78193364" target="_blank" rel="noopener">https://blog.csdn.net/xin_jmail/article/details/78193364</a></p>
+<hr>
+<h2 id="Git-gitignore"><a href="#Git-gitignore" class="headerlink" title=" Git - gitignore  "></a><strong><p style="color:orange"> Git - gitignore  </p></strong></h2><h3 id="clone-下来的文件和-本地文件大小-不一样"><a href="#clone-下来的文件和-本地文件大小-不一样" class="headerlink" title="clone 下来的文件和 本地文件大小 不一样"></a>clone 下来的文件和 本地文件大小 不一样</h3><p>关于 github clone 下来的文件和 本地文件大小 不一样，是因为 git 里有一个控制 忽略版本控制的配置 – gitignore<br>按照网上的方法，从GitHub客户端上传VS的项目文件到GitHub上后，发现怎么也找不到bin、obj文件夹以及suo文件。后来在网上找到篇文章，发现原来都是gitignore文件惹的祸。</p>
+<p>.gitignore是一个重要而且实用的文件。一般代码写完后会执行 <strong><em>编译等操作</em></strong>，这期间会产生很大 <strong><em>中间文件和可执行文件</em></strong>，这些都不是代码文件，是不需要git来管理的。在git status的时候会看到很多这样的文件。自动生成的gitignore文件规定了要忽略的文件，<strong><em>比如VS的bin和obj是编译目录，里面都不是源代码，忽略；suo文件是VS2010的配置文件，也会被忽略。</em></strong>  </p>
+<p>这个文件是在本地添加Repository的时候自动生成的。如果想要将bin等文件一同托管到GitHub，commit的时候不勾选这个文件即可，如果已经commit，从本地仓库删除即可。</p>
+<p>vs 使用git管理bin obj 去除版本控制<br><a href="https://www.cnblogs.com/taidi/p/6095549.html?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="noopener">https://www.cnblogs.com/taidi/p/6095549.html?utm_source=itdadao&amp;utm_medium=referral</a>  </p>
+<hr>
+<h3 id="Git中-gitignore的配置语法"><a href="#Git中-gitignore的配置语法" class="headerlink" title="Git中.gitignore的配置语法"></a>Git中.gitignore的配置语法</h3><p>语法规范  </p>
+<ul>
+<li><p>空行或是以#开头的行即注释行将被忽略。 </p>
+</li>
+<li><p>可以在前面添加正斜杠/来避免递归,下面的例子中可以很明白的看出来与下一条的区别。</p>
+</li>
+<li><p>可以在后面添加正斜杠/来忽略文件夹，例如build/即忽略build文件夹。</p>
+</li>
+<li><p>可以使用!来否定忽略，即比如在前面用了*.apk，然后使用!a.apk，则这个a.apk不会被忽略。</p>
+</li>
+<li><p><em>用来匹配零个或多个字符，如</em>.[oa]忽略所有以”.o”或”.a”结尾，*<del>忽略所有以</del>结尾的文件（这种文件通常被许多编辑器标记为临时文件）；[]用来匹配括号内的任一字符，如[abc]，也可以在括号内加连接符，如[0-9]匹配0至9的数；?用来匹配单个字符。</p>
+</li>
+</ul>
+<p>example:  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 忽略 .a 文件</span><br><span class="line">*.a</span><br><span class="line"># 但否定忽略 lib.a, 尽管已经在前面忽略了 .a 文件</span><br><span class="line">!lib.a</span><br><span class="line"># 仅在当前目录下忽略 TODO 文件， 但不包括子目录下的 subdir&#x2F;TODO</span><br><span class="line">&#x2F;TODO</span><br><span class="line"># 忽略 build&#x2F; 文件夹下的所有文件</span><br><span class="line">build&#x2F;</span><br><span class="line"># 忽略 doc&#x2F;notes.txt, 不包括 doc&#x2F;server&#x2F;arch.txt</span><br><span class="line">doc&#x2F;*.txt</span><br><span class="line"># 忽略所有的 .pdf 文件 在 doc&#x2F; directory 下的</span><br><span class="line">doc&#x2F;**&#x2F;*.pdf</span><br></pre></td></tr></table></figure>
+
+<p>ref： <a href="https://www.jianshu.com/p/ea6341224e89" target="_blank" rel="noopener">https://www.jianshu.com/p/ea6341224e89</a>  </p>
+<p>详细版<br><a href="https://www.cnblogs.com/kevingrace/p/5690241.html" target="_blank" rel="noopener">Git忽略提交规则 - .gitignore配置运维总结</a>  </p>
+<hr>
+<h2 id="Github-release-功能-（待更）"><a href="#Github-release-功能-（待更）" class="headerlink" title="Github release 功能  （待更）"></a><strong><em>Github release 功能  （待更）</em></strong></h2><p><a href="https://blog.csdn.net/weixin_41287260/article/details/97617620" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41287260/article/details/97617620</a></p>
+<hr>
+<h2 id="在服务器上搭建-Git-（待更）"><a href="#在服务器上搭建-Git-（待更）" class="headerlink" title="在服务器上搭建 Git  （待更）"></a><strong><em>在服务器上搭建 Git  （待更）</em></strong></h2><ol>
+<li><p>使用 git<br><a href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA-Git#r_git_on_the_server" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA-Git#r_git_on_the_server</a>  </p>
+</li>
+<li><p>gitlab  </p>
+</li>
+</ol>
+<hr>
+<hr>
+<h1 id="便携版-git-protablegit"><a href="#便携版-git-protablegit" class="headerlink" title="便携版 git  protablegit"></a>便携版 git  protablegit</h1><h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><p>压缩文件里提供了一份简要说明 readme.txt</p>
+<p>这里写一下自己的使用习惯</p>
+<p>初次使用时官方建议配置一下 全局的（global）name,email<br>不过这里我觉得不急;</p>
+<p>以下是官方文档的说明<br><a href="https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE</a> </p>
+<blockquote>
+<p>因为Git 会查找 $HOME 目录下（一般情况下是 C:\Users$USER）的 .gitconfig 文件。 Git 同样也会寻找 /etc/gitconfig 文件，但只限于 MSys 的根目录下，即安装 Git 时所选的目标位置。</p>
+</blockquote>
+<p>由于是便携的，不受机器限制，所以每当换一个使用环境（在其他电脑上），让git先自己找一下本地是否存在 gitconfig 配置，如果有则直接使用（没有，不配置也行吧，因为可以但对对某个仓库配置config）</p>
+<p>相关command</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">查看user.name/user.email</span><br><span class="line"><span class="comment">//查看user.name</span></span><br><span class="line">git <span class="built_in">config</span> user.name</span><br><span class="line"><span class="comment">//查看user.email</span></span><br><span class="line">git <span class="built_in">config</span> user.email</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">配置user.name/user.email</span><br><span class="line"><span class="comment">//配置user.name</span></span><br><span class="line">git <span class="built_in">config</span> --global user.name <span class="string">"your user name"</span></span><br><span class="line"><span class="comment">//配置user.email</span></span><br><span class="line">git <span class="built_in">config</span> --global user.email <span class="string">"your user email"</span></span><br><span class="line"></span><br><span class="line">--global 只能设置一次，要修改，如下</span><br><span class="line"><span class="comment">//修改user.name</span></span><br><span class="line">git <span class="built_in">config</span> --global --replace-all user.name <span class="string">"your user name"</span></span><br><span class="line"><span class="comment">//修改user.email</span></span><br><span class="line">git <span class="built_in">config</span> --global --replace-all user.email<span class="string">"your user email"</span></span><br></pre></td></tr></table></figure>
+
+<p>ref:<br><a href="https://blog.csdn.net/lewky_liu/article/details/78708589" target="_blank" rel="noopener">https://blog.csdn.net/lewky_liu/article/details/78708589</a></p>
+<h2 id="便携版git-git-portable-的初始化配置（不写入注册表，没有git-bash-git-gui）"><a href="#便携版git-git-portable-的初始化配置（不写入注册表，没有git-bash-git-gui）" class="headerlink" title="便携版git(git-portable)的初始化配置（不写入注册表，没有git bash,git gui）"></a>便携版git(git-portable)的初始化配置（不写入注册表，没有git bash,git gui）</h2><p><a href="https://blog.csdn.net/github_30605157/article/details/53347865" target="_blank" rel="noopener">https://blog.csdn.net/github_30605157/article/details/53347865</a>  </p>
+<h2 id="以下是通过解压（-exe）后初次运行结果（不知什么意思）双击则没有（readme-txt有说明）"><a href="#以下是通过解压（-exe）后初次运行结果（不知什么意思）双击则没有（readme-txt有说明）" class="headerlink" title="以下是通过解压（.exe）后初次运行结果（不知什么意思）双击则没有（readme.txt有说明）"></a>以下是通过解压（.exe）后初次运行结果（不知什么意思）双击则没有（readme.txt有说明）</h2><p>电脑盘上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mkdir: cannot create directory '/dev/shm': Read-only file system</span><br><span class="line"></span><br><span class="line">Creating /dev/shm directory failed.</span><br><span class="line">POSIX semaphores <span class="keyword">and</span> POSIX shared memory will <span class="keyword">not</span> work</span><br><span class="line"></span><br><span class="line">mkdir: cannot create directory '/dev/mqueue': Read-only file system</span><br><span class="line"></span><br><span class="line">Creating /dev/mqueue directory failed.</span><br><span class="line">POSIX message queues will <span class="keyword">not</span> work</span><br><span class="line"></span><br><span class="line">ln: failed to create symbolic link '/dev/stdin': Read-only file system</span><br><span class="line">ln: failed to create symbolic link '/dev/stdout': Read-only file system</span><br><span class="line">ln: failed to create symbolic link '/dev/stderr': Read-only file system</span><br><span class="line">ln: failed to create symbolic link '/dev/fd': Read-only file system</span><br><span class="line">'C:\WINDOWS\system32\drivers\etc\hosts' -&gt; '/etc/hosts'</span><br><span class="line">'C:\WINDOWS\system32\drivers\etc\protocol' -&gt; '/etc/protocols'</span><br><span class="line">'C:\WINDOWS\system32\drivers\etc\services' -&gt; '/etc/services'</span><br><span class="line">'C:\WINDOWS\system32\drivers\etc\networks' -&gt; '/etc/networks'</span><br></pre></td></tr></table></figure>
+
+<p>U盘上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">POSIX semaphores <span class="keyword">and</span> POSIX shared memory will <span class="keyword">not</span> work</span><br><span class="line"></span><br><span class="line">mkdir: cannot create directory '/dev/mqueue': Read-only file system</span><br><span class="line"></span><br><span class="line">Creating /dev/mqueue directory failed.</span><br><span class="line">POSIX message queues will <span class="keyword">not</span> work</span><br><span class="line"></span><br><span class="line">ln: failed to create symbolic link '/dev/stdin': Read-only file system</span><br><span class="line">ln: failed to create symbolic link '/dev/stdout': Read-only file system</span><br><span class="line">ln: failed to create symbolic link '/dev/stderr': Read-only file system</span><br><span class="line">ln: failed to create symbolic link '/dev/fd': Read-only file system</span><br><span class="line">'C:\WINDOWS\system32\drivers\etc\hosts' -&gt; '/etc/hosts'</span><br><span class="line">'C:\WINDOWS\system32\drivers\etc\protocol' -&gt; '/etc/protocols'</span><br><span class="line">'C:\WINDOWS\system32\drivers\etc\services' -&gt; '/etc/services'</span><br><span class="line">'C:\WINDOWS\system32\drivers\etc\networks' -&gt; '/etc/networks'</span><br><span class="line">ln: failed to create hard link 'G:/tpPrograms/Git/PortableGit-2.23.0-32-bit.7z/mingw32/libexec/git-core/dlls-copied' =&gt; 'G:/tpPrograms/Git/PortableGit-2.23.0-32-bit.7z/mingw32//bin/git.exe': Operation not permitted</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr>
+<hr>
+<h1 id="Pit"><a href="#Pit" class="headerlink" title="Pit"></a><strong><em>Pit</em></strong></h1><h2 id="fatal-refusing-to-merge-unrelated-histories-不相关的历史"><a href="#fatal-refusing-to-merge-unrelated-histories-不相关的历史" class="headerlink" title="fatal: refusing to merge unrelated histories(不相关的历史)"></a>fatal: refusing to merge unrelated histories(不相关的历史)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories</span><br></pre></td></tr></table></figure>
+
+<h2 id="远程文件（及GitHub上对应的仓库文件）包含了你本地没有的文件，你需要首先将远程文件同步到本地"><a href="#远程文件（及GitHub上对应的仓库文件）包含了你本地没有的文件，你需要首先将远程文件同步到本地" class="headerlink" title="远程文件（及GitHub上对应的仓库文件）包含了你本地没有的文件，你需要首先将远程文件同步到本地"></a>远程文件（及GitHub上对应的仓库文件）包含了你本地没有的文件，你需要首先将远程文件同步到本地</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull--rebase origin master（同步远程文件到本地）</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">Related Posts</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\02\08\AnacondaDoc\" rel="bookmark">Anaconda Docs</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\02\08\HexoDoc\" rel="bookmark">Hexo Docs</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019\10\05\npm\" rel="bookmark">npm Docs</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2019\10\05\跨终端部署blog\" rel="bookmark">跨终端部署blog  使用git实现</a></div>
+    </li>
+  </ul>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Docs/" rel="tag"><i class="fa fa-tag"></i> Docs</a>
+              <a href="/tags/Git/" rel="tag"><i class="fa fa-tag"></i> Git</a>
+              <a href="/tags/gitignore/" rel="tag"><i class="fa fa-tag"></i> .gitignore</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/10/05/Pieces/" rel="prev" title="pieces of knowledge">
+      <i class="fa fa-chevron-left"></i> pieces of knowledge
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/11/JavaConnectToSQLServer/" rel="next" title="JDBC连接SQLserver">
+      JDBC连接SQLserver <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-Guide"><span class="nav-number">1.</span> <span class="nav-text">Git  Guide</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文档"><span class="nav-number">1.1.</span> <span class="nav-text">文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官方Documentation"><span class="nav-number">1.1.1.</span> <span class="nav-text">官方Documentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git详细操作"><span class="nav-number">1.1.2.</span> <span class="nav-text">Git详细操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-安装和使用教程-转载"><span class="nav-number">1.1.3.</span> <span class="nav-text">Git 安装和使用教程(转载)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-基本工作流程"><span class="nav-number">1.2.</span> <span class="nav-text">Git 基本工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地工作流程（灵魂所在）"><span class="nav-number">1.2.1.</span> <span class="nav-text">本地工作流程（灵魂所在）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Git-有三种状态"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Git 有三种状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工作区与暂存区的区别"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">工作区与暂存区的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git-的基本工作流程"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">Git 的基本工作流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程工作流程"><span class="nav-number">1.2.2.</span> <span class="nav-text">远程工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过-git-提交-代码-到-Github"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">通过 git 提交 代码 到 Github</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Some-words"><span class="nav-number">1.3.</span> <span class="nav-text">Some words</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令使用"><span class="nav-number">1.4.</span> <span class="nav-text">命令使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加新的远程仓库【url】（不是创建）"><span class="nav-number">1.4.1.</span> <span class="nav-text">添加新的远程仓库【url】（不是创建）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在本地创建-Git-仓库，并推送"><span class="nav-number">1.4.2.</span> <span class="nav-text">在本地创建 Git 仓库，并推送</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git推送到多仓库"><span class="nav-number">1.4.3.</span> <span class="nav-text">Git推送到多仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和合并分支-以及原理"><span class="nav-number">1.4.4.</span> <span class="nav-text">创建和合并分支(以及原理))</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分支合并的模式-2种"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">分支合并的模式 (2种)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git撤销修改和删除文件操作"><span class="nav-number">1.4.5.</span> <span class="nav-text">Git撤销修改和删除文件操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github-http-免密提交"><span class="nav-number">1.5.</span> <span class="nav-text">Github  http 免密提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-push-命令-深度理解"><span class="nav-number">1.6.</span> <span class="nav-text">git push 命令 深度理解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特例"><span class="nav-number">1.6.1.</span> <span class="nav-text">特例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-拉取-和-获取-pull-和-fetch-区别"><span class="nav-number">1.7.</span> <span class="nav-text">Git 拉取 和 获取  ( pull 和 fetch 区别 )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不同-Git-平台-间-迁库-问题"><span class="nav-number">1.8.</span> <span class="nav-text">不同 Git 平台 间 迁库 问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#way-1-import-repo"><span class="nav-number">1.8.1.</span> <span class="nav-text">way 1 : import repo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#way-2-commond-line"><span class="nav-number">1.8.2.</span> <span class="nav-text">way 2 : commond line</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git用新分支替换掉master分支"><span class="nav-number">1.9.</span> <span class="nav-text">git用新分支替换掉master分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-gitignore"><span class="nav-number">1.10.</span> <span class="nav-text"> Git - gitignore  </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#clone-下来的文件和-本地文件大小-不一样"><span class="nav-number">1.10.1.</span> <span class="nav-text">clone 下来的文件和 本地文件大小 不一样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git中-gitignore的配置语法"><span class="nav-number">1.10.2.</span> <span class="nav-text">Git中.gitignore的配置语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github-release-功能-（待更）"><span class="nav-number">1.11.</span> <span class="nav-text">Github release 功能  （待更）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在服务器上搭建-Git-（待更）"><span class="nav-number">1.12.</span> <span class="nav-text">在服务器上搭建 Git  （待更）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#便携版-git-protablegit"><span class="nav-number">2.</span> <span class="nav-text">便携版 git  protablegit</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用说明"><span class="nav-number">2.1.</span> <span class="nav-text">使用说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#便携版git-git-portable-的初始化配置（不写入注册表，没有git-bash-git-gui）"><span class="nav-number">2.2.</span> <span class="nav-text">便携版git(git-portable)的初始化配置（不写入注册表，没有git bash,git gui）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以下是通过解压（-exe）后初次运行结果（不知什么意思）双击则没有（readme-txt有说明）"><span class="nav-number">2.3.</span> <span class="nav-text">以下是通过解压（.exe）后初次运行结果（不知什么意思）双击则没有（readme.txt有说明）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pit"><span class="nav-number">3.</span> <span class="nav-text">Pit</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fatal-refusing-to-merge-unrelated-histories-不相关的历史"><span class="nav-number">3.1.</span> <span class="nav-text">fatal: refusing to merge unrelated histories(不相关的历史)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程文件（及GitHub上对应的仓库文件）包含了你本地没有的文件，你需要首先将远程文件同步到本地"><span class="nav-number">3.2.</span> <span class="nav-text">远程文件（及GitHub上对应的仓库文件）包含了你本地没有的文件，你需要首先将远程文件同步到本地</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HnnH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">HnnH</p>
+  <div class="site-description" itemprop="description">That which does not kill us makes us stronger</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:bellamy_n_h_chief@163.com" title="E-Mail → mailto:bellamy_n_h_chief@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://aofnh.github.io/" title="https:&#x2F;&#x2F;aofnh.github.io&#x2F;" rel="noopener" target="_blank">MyBlog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HnnH</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script size="200" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three.min.js"></script>
+    <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes : 0,
+          toolbar  : 0,
+          statusbar: 0,
+          pagemode : 'thumbs',
+          view     : 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
