@@ -122,11 +122,11 @@
 <p><a href="https://blog.csdn.net/whjkm/article/details/81088518" target="_blank" rel="noopener">https://blog.csdn.net/whjkm/article/details/81088518</a>  </p>
 <p><a href="https://www.tanxiaoyao.com/post/59005" target="_blank" rel="noopener">https://www.tanxiaoyao.com/post/59005</a>  </p>
 <hr>
-<h2 id="hexo-插件实现-给博客文章加密"><a href="#hexo-插件实现-给博客文章加密" class="headerlink" title="hexo 插件实现 给博客文章加密"></a>hexo 插件实现 给博客文章加密</h2><p><a href="https://github.com/MikeCoder/hexo-blog-encrypt" target="_blank" rel="noopener">Hexo-blog-encrypt 插件地址&amp;usage</a> </p>
+<h2 id="Encrypt-articles"><a href="#Encrypt-articles" class="headerlink" title="Encrypt articles"></a>Encrypt articles</h2><p><a href="https://github.com/MikeCoder/hexo-blog-encrypt" target="_blank" rel="noopener">Hexo-blog-encrypt 插件地址&amp;usage</a> </p>
 <p><a href="https://xsin.gitee.io/2019/01/11/hexo-blog-encrypt/" target="_blank" rel="noopener">usage / 用法</a>  </p>
 <p><a href="https://yuyuforest.com/2018/10/18/encrypt-toc/" target="_blank" rel="noopener">解决加密TOC问题</a> </p>
 <hr>
-<h2 id="how-to-add-tags-or-categories-for-articles-tags-and-categories-的规范"><a href="#how-to-add-tags-or-categories-for-articles-tags-and-categories-的规范" class="headerlink" title="how to add tags or categories for articles / tags and categories 的规范"></a>how to add tags or categories for articles / tags and categories 的规范</h2><ul>
+<h2 id="How-to-add-tags-or-categories-for-articles-tags-and-categories-的规范"><a href="#How-to-add-tags-or-categories-for-articles-tags-and-categories-的规范" class="headerlink" title="How to add tags or categories for articles / tags and categories 的规范"></a>How to add tags or categories for articles / tags and categories 的规范</h2><ul>
 <li>the same hierarchical level </li>
 </ul>
 <p>Example</p>
@@ -138,6 +138,26 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- [Sports, Baseball]</span><br><span class="line">- [MLB, American League, Boston Red Sox]</span><br><span class="line">- [MLB, American League, New York Yankees]</span><br><span class="line">- Rivalries</span><br></pre></td></tr></table></figure>
 
 <p><a href="https://hexo.io/docs/front-matter#Categories-amp-Tags" target="_blank" rel="noopener">https://hexo.io/docs/front-matter#Categories-amp-Tags</a></p>
+<h2 id="404-error"><a href="#404-error" class="headerlink" title="404 error"></a>404 error</h2><h3 id="Categories-or-Tags-部分链接出现-404-page"><a href="#Categories-or-Tags-部分链接出现-404-page" class="headerlink" title="Categories or Tags 部分链接出现 404 page"></a>Categories or Tags 部分链接出现 404 page</h3><p><strong>原因</strong><br>git 默认忽略文件名大小写，所以即使文件夹大小写变更，git 也检测不到。  </p>
+<blockquote>
+<p><strong>详解</strong><br>这是由于之前将大写的标签改小写or 小写标签改大写，但是git 在push 时又是忽略大小写的，导致本地原来文件名小写的文件在将文件名改为大写后，其在GitHub上对应的文件名依旧是原来小写的文件名，反之亦然。<br>而url是区分大小写的，于时当你点击的链接是指向大写文件内的index时，由于GitHub上不存在改大写文件，所以指向404 page。  </p>
+</blockquote>
+<blockquote>
+<p><strong>For instance</strong><br>使用 Hexo 部署博客到 Github Pages 时经常会遇到文件夹大小写问题导致的 404问题。譬如 Hexo 生成了一个java分类，但是我后来把它改成了 Java。Hexo本地生成正确，但部署到 Github 上却老是不正确。</p>
+</blockquote>
+<p><strong>解决办法</strong>  </p>
+<ol>
+<li><p>进入到博客项目中 .deploy_git文件夹，修改 .git 下的 config 文件，将 ignorecase=true 改为 ignorecase=false  </p>
+</li>
+<li><p>删除博客项目中 .deploy_git 文件夹下的所有文件(除.git)，并 push 到 Github 上, 这一步是清空你的 github.io 项目中所有文件。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git rm -rf *</span><br><span class="line">git commit -m &#39;clean all file&#39;</span><br><span class="line">git push yourRepositoryUrl &lt;localBranchName&gt;:&lt;remoteBranchName&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用 Hexo 再次生成及部署</li>
+</ol>
+<p>Ref:<br><a href="https://xhyangdali.github.io/2019/05/10/GitHub+Hexo%E5%8D%9A%E5%AE%A2categories%E5%87%BA%E7%8E%B0404/" target="_blank" rel="noopener">https://xhyangdali.github.io/2019/05/10/GitHub+Hexo%E5%8D%9A%E5%AE%A2categories%E5%87%BA%E7%8E%B0404/</a></p>
 <hr>
 <hr>
 <h1 id="NexT-theme-config"><a href="#NexT-theme-config" class="headerlink" title="NexT theme config"></a>NexT theme config</h1><h2 id="NexT-installation"><a href="#NexT-installation" class="headerlink" title="NexT installation"></a>NexT installation</h2><p>使用 git  安装、更新、checkout tag(切换版本)</p>
@@ -235,6 +255,7 @@ code snippet  ```</code></p>
       <tags>
         <tag>Docs</tag>
         <tag>Hexo</tag>
+        <tag>NexT</tag>
       </tags>
   </entry>
   <entry>
